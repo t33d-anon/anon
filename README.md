@@ -1,1 +1,1 @@
-# zedong.github.io
+# MagicMix's project page
