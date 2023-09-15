@@ -1,1 +1,0 @@
-# MagicMix's project page
