@@ -1,1 +1,1 @@
-# MagicMix's project page
+# Amazing Combinatorial Creation: Acceptable Swap-Sampling for Text-to-Image Generation
