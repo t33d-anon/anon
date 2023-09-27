@@ -474,6 +474,7 @@ an acceptable region to build a sampling method for selecting an optimal combina
     <br>
 
       <h1>Results Comparasion</h1>
+      <h2>Visual Comparision</h2>
           <p style="TEXT-ALIGN: center">
               Visual comparisons of combinatorial object generations. We compare our ASS method with
 the SOTA T2I models, Stable-Diffusion2, DALLE2, ERNIE-ViLG2 (Baidu) and Bing
@@ -484,30 +485,42 @@ illustrates that our approach has the ability to generate out-of-distribution im
           </p>
 
 
-    <img style="width: 80%;" src="./resources/fig_framework.png" alt="Teaser figure."/>
+    <img style="width: 80%;" src="./resources/fig_cm1.png" alt="Teaser figure."/>
+    <br>
+      <h2>Sampling Comparision</h2>
+          <p style="TEXT-ALIGN: center">
+              Sampling visualizations compared our ASS with the SOTA human-evaluation methods: HPSv2 and PickScore
+          </p>
+
+
+    <img style="width: 80%;" src="./resources/fig_HPT.png" alt="Teaser figure."/>
     <br>
 
-    <h1>Fix One With Another</h1>
-
+    <h1>More Results</h1>
+      <h2>Different Styles Generation</h2>
 
 
     <p style="TEXT-ALIGN: center">
-        In this section,we add a different image to a fixed image to create a new image.
-        <b>Hover mouse to reveal the answer</b>
+        Generalizations using four different styles including aquarelle, line-art, cartoon, and ink painting.
     </p>
+      <img style="width: 80%;" src="./resources/fig_style.png" alt="Teaser figure."/>
+    <br>
 
 
     <br><br>
     <hr>
+      <h2>Fix one with another</h2>
 
 
-
+    <p style="TEXT-ALIGN: center">
+        We fixed two words:bea eater and green lizard, to generalize different results.
+    </p>
+      
     <div class="row">
         <div class="column">
-                    <img src="resources/samples/wolfhound.png" alt="pagoda + lamp" style="width:180px;height:180px">
+                    <img src="resources/fix/bee eater.png" alt="pagoda + lamp" style="width:180px;height:180px">
                 </div>
        
-
         <div class="column">
             <div class="empty-smallbox9">
                 <div class="centered" >+</div>
@@ -518,11 +531,11 @@ illustrates that our approach has the ability to generate out-of-distribution im
             <div class="flip-box2">
                 <div class="flip-box2-inner">
                     <div class="flip-box2-front">
-                    <img src="resources/samples/wolfhound.png" alt="pagoda + lamp" style="width:180px;height:180px">
+                    <img src="resources/fix/electric guitar.png" alt="pagoda + lamp" style="width:180px;height:180px">
                         
                     </div>
                     <div class="flip-box2-back">
-                        <img src="resources/samples/bee eater+wolfhound.png" alt="pagoda" style="width:180px;height:180px">
+                        <img src="resources/fix/bee eater&electric guitar_model_0.13_0.25.png" alt="pagoda" style="width:180px;height:180px">
                         
                     </div>
                 </div>
@@ -532,11 +545,11 @@ illustrates that our approach has the ability to generate out-of-distribution im
             <div class="flip-box2">
                 <div class="flip-box2-inner">
                     <div class="flip-box-front">
-                    <img src="resources/samples/wolfhound.png" alt="pagoda + lamp" style="width:180px;height:180px">
+                    <img src="resources/fix/Irish wolfhound.png" alt="pagoda + lamp" style="width:180px;height:180px">
                        
                     </div>
                     <div class="flip-box2-back">
-                        <img src="resources/samples/bee eater+wolfhound.png" alt="pagoda" style="width:180px;height:180px">
+                        <img src="resources/fix/bee eater&Irish wolfhound_model_0.26_0.26.png" alt="pagoda" style="width:180px;height:180px">
                         
                     </div>
                 </div>
@@ -546,11 +559,11 @@ illustrates that our approach has the ability to generate out-of-distribution im
             <div class="flip-box2">
                 <div class="flip-box2-inner">
                     <div class="flip-box2-front">
-                    <img src="resources/samples/wolfhound.png" alt="pagoda + lamp" style="width:180px;height:180px">
+                    <img src="resources/fix/redbone.png" alt="pagoda + lamp" style="width:180px;height:180px">
                         
                     </div>
                     <div class="flip-box2-back">
-                        <img src="resources/samples/bee eater+wolfhound.png" alt="pagoda" style="width:180px;height:180px">
+                        <img src="resources/fix/bee eater&redbone_model_0.28_0.17.png" alt="pagoda" style="width:180px;height:180px">
                         
                     </div>
                 </div>
@@ -561,11 +574,11 @@ illustrates that our approach has the ability to generate out-of-distribution im
             <div class="flip-box2">
                 <div class="flip-box2-inner">
                     <div class="flip-box2-front">
-                    <img src="resources/samples/wolfhound.png" alt="pagoda + lamp" style="width:180px;height:180px">
+                    <img src="resources/fix/tree frog.png" alt="pagoda + lamp" style="width:180px;height:180px">
                        
                     </div>
                     <div class="flip-box2-back">
-                        <img src="resources/samples/bee eater+wolfhound.png" alt="pagoda" style="width:180px;height:180px">
+                        <img src="resources/fix/bee eater&tree frog_model_0.23_0.27.png" alt="pagoda" style="width:180px;height:180px">
                         
                     </div>
                 </div>
@@ -577,7 +590,7 @@ illustrates that our approach has the ability to generate out-of-distribution im
     <div class="row">
         <div class="column">
             <div class="empty-smallbox8">
-                <div class="centered" >Australian terrier</div>
+                <div class="centered" >bee eater</div>
             </div>
         </div>
 
@@ -593,24 +606,24 @@ illustrates that our approach has the ability to generate out-of-distribution im
     
         <div class="column">
             <div class="empty-smallbox8">
-                <div class="centered" >+</div>
+                <div class="centered" >electric guitar</div>
             </div>
         </div>
     
         <div class="column">
             <div class="empty-smallbox8">
-                <div class="centered" >+</div>
+                <div class="centered" >Irish wolfhound</div>
             </div>
         </div>
     
         <div class="column">
             <div class="empty-smallbox8">
-                <div class="centered" >+</div>
+                <div class="centered" >redbone</div>
             </div>
         </div>
         <div class="column">
             <div class="empty-smallbox8">
-                <div class="centered" >+</div>
+                <div class="centered" >tree frog</div>
             </div>
         </div>
      </div>
@@ -618,7 +631,7 @@ illustrates that our approach has the ability to generate out-of-distribution im
      
     <div class="row">
         <div class="column">
-                    <img src="resources/samples/wolfhound.png" alt="pagoda + lamp" style="width:180px;height:180px">
+                    <img src="resources/fix/green lizard.png" alt="pagoda + lamp" style="width:180px;height:180px">
                 </div>
        
 
@@ -632,11 +645,11 @@ illustrates that our approach has the ability to generate out-of-distribution im
             <div class="flip-box2">
                 <div class="flip-box2-inner">
                     <div class="flip-box2-front">
-                    <img src="resources/samples/wolfhound.png" alt="pagoda + lamp" style="width:180px;height:180px">
+                    <img src="resources/fix/Border terrier.png" alt="pagoda + lamp" style="width:180px;height:180px">
                         
                     </div>
                     <div class="flip-box2-back">
-                        <img src="resources/samples/bee eater+wolfhound.png" alt="pagoda" style="width:180px;height:180px">
+                        <img src="resources/fix/green lizard&Border terrier_model_0.27_0.18.png" alt="pagoda" style="width:180px;height:180px">
                         
                     </div>
                 </div>
@@ -646,11 +659,11 @@ illustrates that our approach has the ability to generate out-of-distribution im
             <div class="flip-box2">
                 <div class="flip-box2-inner">
                     <div class="flip-box-front">
-                    <img src="resources/samples/wolfhound.png" alt="pagoda + lamp" style="width:180px;height:180px">
+                    <img src="resources/fix/head cabbage.png" alt="pagoda + lamp" style="width:180px;height:180px">
                        
                     </div>
                     <div class="flip-box2-back">
-                        <img src="resources/samples/bee eater+wolfhound.png" alt="pagoda" style="width:180px;height:180px">
+                        <img src="resources/fix/green lizard&head cabbage_model_0.27_0.26.png" alt="pagoda" style="width:180px;height:180px">
                         
                     </div>
                 </div>
@@ -660,11 +673,11 @@ illustrates that our approach has the ability to generate out-of-distribution im
             <div class="flip-box2">
                 <div class="flip-box2-inner">
                     <div class="flip-box2-front">
-                    <img src="resources/samples/wolfhound.png" alt="pagoda + lamp" style="width:180px;height:180px">
+                    <img src="resources/fix/killer whale.png" alt="pagoda + lamp" style="width:180px;height:180px">
                         
                     </div>
                     <div class="flip-box2-back">
-                        <img src="resources/samples/bee eater+wolfhound.png" alt="pagoda" style="width:180px;height:180px">
+                        <img src="resources/fix/green lizard&killer whale_model_0.27_0.19.png" alt="pagoda" style="width:180px;height:180px">
                         
                     </div>
                 </div>
@@ -675,11 +688,11 @@ illustrates that our approach has the ability to generate out-of-distribution im
             <div class="flip-box2">
                 <div class="flip-box2-inner">
                     <div class="flip-box2-front">
-                    <img src="resources/samples/wolfhound.png" alt="pagoda + lamp" style="width:180px;height:180px">
+                    <img src="resources/fix/silky terrier.png" alt="pagoda + lamp" style="width:180px;height:180px">
                        
                     </div>
                     <div class="flip-box2-back">
-                        <img src="resources/samples/bee eater+wolfhound.png" alt="pagoda" style="width:180px;height:180px">
+                        <img src="resources/fix/green lizard&silky terrier_model_0.23_0.28.png" alt="pagoda" style="width:180px;height:180px">
                         
                     </div>
                 </div>
@@ -691,7 +704,7 @@ illustrates that our approach has the ability to generate out-of-distribution im
     <div class="row">
         <div class="column">
             <div class="empty-smallbox8">
-                <div class="centered" >Australian terrier</div>
+                <div class="centered" >green lizard</div>
             </div>
         </div>
 
@@ -707,24 +720,24 @@ illustrates that our approach has the ability to generate out-of-distribution im
     
         <div class="column">
             <div class="empty-smallbox8">
-                <div class="centered" >+</div>
+                <div class="centered" >Border terrier</div>
             </div>
         </div>
     
         <div class="column">
             <div class="empty-smallbox8">
-                <div class="centered" >+</div>
+                <div class="centered" >head cabbage</div>
             </div>
         </div>
     
         <div class="column">
             <div class="empty-smallbox8">
-                <div class="centered" >+</div>
+                <div class="centered" >killer whale</div>
             </div>
         </div>
         <div class="column">
             <div class="empty-smallbox8">
-                <div class="centered" >+</div>
+                <div class="centered" >silky terrier</div>
             </div>
         </div>
      </div>
@@ -732,41 +745,11 @@ illustrates that our approach has the ability to generate out-of-distribution im
     <br><br>
     <hr>
 
-
-    <h1>With Different Style</h1>
-    <p style="TEXT-ALIGN: center">
-        In this section,We add different styles to generated images to produce more creative images
-    </p>
-
-
-    <img style="width: 80%;" src="./resources/teaser.2.png" alt="Teaser figure."/>
-    <br>
-
-
-
-    <h1>More Results</h1>
     
-    <h2>Semantic style transfer</h2>
-    <img style="width: 85%;" src="resources/samples/More result1.png"
+    <h2>More visual results</h2>
+    <img style="width: 85%;" src="resources/more_res.png"
          alt="Semantic style transfer results"/>
     <br>
-
-    <h2>Novel object synthesis</h2>
-    <img style="width: 85%;" src="resources/samples/More result2.png"
-         alt="Novel object synthesis results"/>
-    <br>
-<!-- 
-    <h2>Breed mixing</h2>
-    <img style="width: 80%;" src="resources/samples/breed_mixing.png"
-        alt="Breed mixing results"/>
-    <br>
-
-    <h2>Concept removal</h2>
-    <img style="width: 80%;" src="resources/samples/concept_removal.png"
-        alt="Concept removal results"/>
-    <br> -->
-
-    <br><br>
     <hr>
 
 
