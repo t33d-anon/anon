@@ -393,7 +393,7 @@ a:hover {
     display: block;
     background-color: transparent;
     width: 130px;
-    height: 20px;
+    height: 40px;
     border: 0px solid #f1f1f1;
     perspective: 1000px; /* Remove this if you don't want the 3D effect */
     font-size:x-large; 
