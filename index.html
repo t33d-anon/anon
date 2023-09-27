@@ -55,7 +55,7 @@
 
     <img style="width: 80%;" src="./resources/fig_0.png" alt="Teaser figure."/>
     <br>
-    <p style="width: 80%; TEXT-ALIGN: center; font-size=10px">
+    <p style="width: 80%; text-align: justify; font-size=8px">
         We propose a simple yet effective sampling method without any training to generate new 
           and meaningful combinations from two given object texts in text-to-image synthesis. 
           The original images of each object text using Stable-Diffusion2 are displayed in the 
@@ -462,7 +462,7 @@ This region allows us to efficiently sample a small subset from a new image pool
     <hr>
 
     <h1>Our framework</h1>
-    <p style="TEXT-ALIGN: center">
+    <p style="text-align: justify; font-size:8px">
         The pipeline of our acceptable swap-sampling method. Starting from text embeddings by
 inputting two given texts into the text encoder, we introduce a swapping operation to collect a set F
 of randomly swapping vectors for novel embeddings, then generate a new image set I, and propose
@@ -475,20 +475,15 @@ an acceptable region to build a sampling method for selecting an optimal combina
 
       <h1>Results Comparasion</h1>
       <h2>Visual Comparision</h2>
-          <p style="TEXT-ALIGN: center">
-              Visual comparisons of combinatorial object generations. We compare our ASS method with
-the SOTA T2I models, Stable-Diffusion2, DALLE2, ERNIE-ViLG2 (Baidu) and Bing
-(Microsoft). Our findings indicate that our model demonstrates greater creative potential compared to
-these counterparts. Furthermore, our results exhibit significant dissimilarity from images retrieved
-from the LAION-5B dataset and the complex text generations in the last two rows. This directly
-illustrates that our approach has the ability to generate out-of-distribution images.
+          <p style="text-align: justify; font-size:8px">
+            Visual comparisons of combinatorial object generations. We compare our ASS method with the SOTA T2I models, Stable-Diffusion2, DALLE2, ERNIE-ViLG2(Baidu), and Bing(Microsoft). 
           </p>
 
 
     <img style="width: 80%;" src="./resources/fig_cm1.png" alt="Teaser figure."/>
     <br>
       <h2>Sampling Comparision</h2>
-          <p style="TEXT-ALIGN: center">
+          <p style="text-align: justify; font-size:8px">
               Sampling visualizations compared our ASS with the SOTA human-evaluation methods: HPSv2 and PickScore
           </p>
 
