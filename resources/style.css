@@ -173,8 +173,8 @@ a:hover {
 .flip-box {
     display: block;
     background-color: transparent;
-    width: 224px;
-    height: 224px;
+    width: 280px;
+    height: 280px;
     border: 1px solid #f1f1f1;
     perspective: 1000px; /* Remove this if you don't want the 3D effect */
   }
@@ -220,7 +220,68 @@ a:hover {
     color: white;
     transform: rotateY(180deg);
   }
-  
+
+
+
+
+
+/* The flip box container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+.flip-box2 {
+  display: block;
+  background-color: transparent;
+  width: 180px;
+  height: 180px;
+  border: 1px solid #f1f1f1;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+ /* This container is needed to position the front and back side */
+ .flip-box2-inner {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-box2:hover .flip-box2-inner {
+  display: block;
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-box2-front, .flip-box2-back {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-box2-front {
+  display: block;
+  background-color: #bbb;
+  color: black;
+}
+
+/* Style the back side */
+.flip-box2-back {
+  display: block;
+  background-color: rgb(0, 0, 0);
+  color: white;
+  transform: rotateY(180deg);
+}
+
+
+
+
+
+
   /* Bottom left text */
   .bottom-left {
     position: absolute;
@@ -291,8 +352,96 @@ a:hover {
     perspective: 1000px; /* Remove this if you don't want the 3D effect */
     font-size:x-large; 
   }
+  .empty-smallbox1 {
+    display: block;
+    background-color: transparent;
+    width: 20px;
+    height: 112px;
+    border: 0px solid #f1f1f1;
+    perspective: 1000px; /* Remove this if you don't want the 3D effect */
+    font-size:x-large; 
+  }
+  .empty-smallbox2 {
+    display: block;
+    background-color: transparent;
+    width: 40px;
+    height: 112px;
+    border: 0px solid #f1f1f1;
+    perspective: 1000px; /* Remove this if you don't want the 3D effect */
+    font-size:x-large; 
+  }
+
+.empty-smallbox3 {
+    display: block;
+    background-color: transparent;
+    width: 40px;
+    height: 280px;
+    border: 0px solid #f1f1f1;
+    perspective: 1000px; /* Remove this if you don't want the 3D effect */
+    font-size:x-large; 
+  }
+  .empty-smallbox4 {
+    display: block;
+    background-color: transparent;
+    width: 49px;
+    height: 280px;
+    border: 0px solid #f1f1f1;
+    perspective: 1000px; /* Remove this if you don't want the 3D effect */
+    font-size:x-large; 
+  }
+  .empty-smallbox5 {
+    display: block;
+    background-color: transparent;
+    width: 130px;
+    height: 20px;
+    border: 0px solid #f1f1f1;
+    perspective: 1000px; /* Remove this if you don't want the 3D effect */
+    font-size:x-large; 
+  }
+  .empty-smallbox6 {
+    display: block;
+    background-color: transparent;
+    width: 20px;
+    height: 20px;
+    border: 0px solid #f1f1f1;
+    perspective: 1000px; /* Remove this if you don't want the 3D effect */
+    font-size:x-large; 
+  }
+  .empty-smallbox7 {
+    display: block;
+    background-color: transparent;
+    width: 40px;
+    height: 20px;
+    border: 0px solid #f1f1f1;
+    perspective: 1000px; /* Remove this if you don't want the 3D effect */
+    font-size:x-large; 
+  }
+
+  .empty-smallbox8 {
+    display: block;
+    background-color: transparent;
+    width: 180px;
+    height: 50px;
+    border: 0px solid #f1f1f1;
+    perspective: 1000px; /* Remove this if you don't want the 3D effect */
+    font-size:x-large; 
+  }
+  .empty-smallbox9 {
+    display: block;
+    background-color: transparent;
+    width: 20px;
+    height: 180px;
+    border: 0px solid #f1f1f1;
+    perspective: 1000px; /* Remove this if you don't want the 3D effect */
+    font-size:x-large; 
+  }
+
+
+
 
   * {box-sizing:border-box}
+
+
 
 /* Slideshow container */
 .slideshow-container {
@@ -392,4 +541,38 @@ a:hover {
 
   .column {
     margin: 0px;
+  }
+
+  .generater {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+  }
+
+  .first-img,
+  .last-img,
+  .left-img {
+    margin: 1px 15px;
+    cursor: pointer;
+  }
+
+  .clicked-image {
+    border: 4px solid rgb(0, 162, 255);
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+  }
+
+  .cat-img {
+    width: 100%;
+  }
+
+  .img-container {
+    display: flex;
+    justify-content: space-between;
+    width: 40%;
+    margin-top: 10px;
+  }
+  .cat-main {
+      margin-left: auto;
+      margin-right: auto;
   }
