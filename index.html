@@ -55,7 +55,7 @@
 
     <img style="width: 80%;" src="./resources/fig_0.png" alt="Teaser figure."/>
     <br>
-    <p style="width: 80%; TEXT-ALIGN: center; font-size=10pt">
+    <p style="width: 80%; TEXT-ALIGN: center; font-size=10px">
         We propose a simple yet effective sampling method without any training to generate new 
           and meaningful combinations from two given object texts in text-to-image synthesis. 
           The original images of each object text using Stable-Diffusion2 are displayed in the 
@@ -461,13 +461,30 @@ This region allows us to efficiently sample a small subset from a new image pool
     <br><br>
     <hr>
 
-    <h1>With Different Style</h1>
+    <h1>Our framework</h1>
     <p style="TEXT-ALIGN: center">
-        In this section,We add different styles to generated images to produce more creative images
+        The pipeline of our acceptable swap-sampling method. Starting from text embeddings by
+inputting two given texts into the text encoder, we introduce a swapping operation to collect a set F
+of randomly swapping vectors for novel embeddings, then generate a new image set I, and propose
+an acceptable region to build a sampling method for selecting an optimal combinatorial object image.
     </p>
 
 
-    <img style="width: 80%;" src="./resources/teaser.2.png" alt="Teaser figure."/>
+    <img style="width: 80%;" src="./resources/fig_framework.png" alt="Teaser figure."/>
+    <br>
+
+      <h1>Results Comparasion</h1>
+          <p style="TEXT-ALIGN: center">
+              Visual comparisons of combinatorial object generations. We compare our ASS method with
+the SOTA T2I models, Stable-Diffusion2, DALLE2, ERNIE-ViLG2 (Baidu) and Bing
+(Microsoft). Our findings indicate that our model demonstrates greater creative potential compared to
+these counterparts. Furthermore, our results exhibit significant dissimilarity from images retrieved
+from the LAION-5B dataset and the complex text generations in the last two rows. This directly
+illustrates that our approach has the ability to generate out-of-distribution images.
+          </p>
+
+
+    <img style="width: 80%;" src="./resources/fig_framework.png" alt="Teaser figure."/>
     <br>
 
     <h1>Fix One With Another</h1>
