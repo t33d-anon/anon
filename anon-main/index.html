@@ -1,0 +1,1038 @@
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">google.load("jquery", "1.3.2");</script>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
+      rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="./resources/style.css" media="screen"/>
+
+<html lang="en">
+<head>
+  	<title> Amazing Combinatorial Creation: Acceptable Swap-Sampling for Text-to-Image Generation</title>
+      <!-- Facebook automatically scrapes this. Go to https://developers.facebook.com/tools/debug/
+          if you update and want to force Facebook to re-scrape. -->
+  	<meta property="og:image" content="./resources/fig_0.png"/>
+  	<meta property="og:title" content="Amazing Combinatorial Creation: Acceptable Swap-Sampling for Text-to-Image Generation." />
+  	<meta property="og:description" content="A simple yet effective sampling method without any training to generate new and meaningful combinations from two given object texts in text-to-image synthesis." />
+    <!-- Twitter automatically scrapes this. Go to https://cards-dev.twitter.com/validator?
+        if you update and want to force Twitter to re-scrape. -->
+    <meta property="twitter:card"          content="summary" />
+    <meta property="twitter:title"         content="Amazing Combinatorial Creation: Acceptable Swap-Sampling for Text-to-Image Generation." />
+    <meta property="twitter:description"   content="A simple yet effective sampling method without any training to generate new and meaningful combinations from two given object texts in text-to-image synthesis." />
+    <meta property="twitter:image"         content="./resources/fig_0.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Add your Google Analytics tag here -->
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=UA-97476543-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'UA-97476543-1');
+    </script>
+
+</head>
+
+<body>
+<div class="container">
+    <div class="title">
+        Amazing Combinatorial Creation: Acceptable Swap-Sampling for Text-to-Image Generation
+    </div>
+
+    <!-- <div class="venue">
+        In Conference 20XX
+    </div> -->
+
+    <br><br>
+
+    <div class="author">
+        <a>Anonymous authors</a>
+    </div>
+
+    <br><br>
+    <br><br>
+
+    <div class="row">
+        <div class="column">
+            <div class="row">
+                <div class="column">
+                    <div class="empty-smallbox10">
+                        <div style="font-size: 10px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >lobster</div>
+                    </div>
+                </div>
+                
+                <div class="column">
+                    <div class="empty-smallbox10">
+                        <div style="font-size: 10px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered " >sea slug</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+        
+        <div class="column">
+            <div class="row">
+                <div class="column">
+                    <div class="empty-smallbox10">
+                        <div style="font-size: 10px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >house finch</div>
+                    </div>
+                </div>
+        
+                <div class="column">
+                    <div class="empty-smallbox10">
+                        <div style="font-size: 10px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >crash helmet</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        
+
+        <div class="column">
+            <div class="row">
+                <div class="column">
+                    <div class="empty-smallbox10">
+                        <div style="font-size: 10px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >lionfish</div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="empty-smallbox10">
+                        <div style="font-size: 10px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >abacus</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="row">
+                <div class="column">
+                    <div class="empty-smallbox10">
+                        <div style="font-size: 10px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >fire engine</div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="empty-smallbox10">
+                        <div style="font-size: 10px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >scotch terrier</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="row">
+                <div class="column">
+                    <div class="empty-smallbox10">
+                        <div style="font-size: 10px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >daisy</div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="empty-smallbox10">
+                        <div style="font-size: 10px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >fiddler crab</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="row">
+        <div class="column">
+            <div class="row">
+                <div class="column">
+                    <img src="resources/fig_0/1-1.png"  style="width:80px;height:80px">
+                </div>
+                <div class="column">
+                <img src="resources/fig_0/1-2.png"  style="width:80px;height:80px">
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="column">
+            <div class="row">
+                <div class="column">
+                    <img src="resources/fig_0/2-1.png" style="width:80px;height:80px">
+                </div>
+               
+                <div class="column">
+                <img src="resources/fig_0/2-2.png"  style="width:80px;height:80px">
+                </div>
+            </div>
+        </div>
+       
+        
+
+        <div class="column">
+            <div class="row">
+                <div class="column">
+                    <img src="resources/fig_0/3-1.png" style="width:80px;height:80px">
+                </div>
+            
+                <div class="column">
+                <img src="resources/fig_0/3-2.png" style="width:80px;height:80px">
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="row">
+                <div class="column">
+                    <img src="resources/fig_0/4-1.png"style="width:80px;height:80px">
+                </div>
+            
+                <div class="column">
+                <img src="resources/fig_0/4-2.png" style="width:80px;height:80px">
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="row">
+                <div class="column">
+                    <img src="resources/fig_0/5-1.png" style="width:80px;height:80px">
+                </div>
+            
+                <div class="column">
+                <img src="resources/fig_0/5-2.png" style="width:80px;height:80px">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="column">
+            <div class="flip-box3">
+                <div class="flip-box3-inner">
+                    <div class="flip-box3-front">
+                    <img src="resources/unknown.png" style="width:165px;height:165px">
+                        
+                    </div>
+                    <div class="flip-box3-back">
+                        <img src="resources/fig_0/1.png" alt="pagoda" style="width:165px;height:165px">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="flip-box3">
+                <div class="flip-box3-inner">
+                    <div class="flip-box3-front">
+                    <img src="resources/unknown.png"  style="width:165px;height:165px">
+                        
+                    </div>
+                    <div class="flip-box3-back">
+                        <img src="resources/fig_0/2.png" alt="pagoda" style="width:165px;height:165px">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="flip-box3">
+                <div class="flip-box3-inner">
+                    <div class="flip-box3-front">
+                    <img src="resources/unknown.png"style="width:165px;height:165px">
+                       
+                    </div>
+                    <div class="flip-box3-back">
+                        <img src="resources/fig_0/3.png" alt="pagoda" style="width:165px;height:165px">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="flip-box3">
+                <div class="flip-box3-inner">
+                    <div class="flip-box3-front">
+                    <img src="resources/unknown.png"  style="width:165px;height:165px">
+                        
+                    </div>
+                    <div class="flip-box3-back">
+                        <img src="resources/fig_0/4.png" alt="pagoda" style="width:165px;height:165px">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="column">
+            <div class="flip-box3">
+                <div class="flip-box3-inner">
+                    <div class="flip-box3-front">
+                    <img src="resources/unknown.png"  style="width:165px;height:165px">
+                       
+                    </div>
+                    <div class="flip-box3-back">
+                        <img src="resources/fig_0/5.png" alt="pagoda" style="width:165px;height:165px">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+   
+
+    <br>
+    <p style="width: 60%; text-align: justify;font-size: 16px;font-family: 'Times New Roman', Times, serif;">
+        We propose a simple yet effective sampling method without any training to generate new 
+          and meaningful combinations from two given object texts in text-to-image synthesis. 
+          The original images of each object text using Stable-Diffusion2<a href="#ref2"><sup>[2]</sup></a> are displayed in the 
+          bottom row, while the top row showcases the amazing combinations produced by our sampling algorithm.
+    </p>
+    <br>
+    <hr>
+
+    <h1>Abstract</h1>
+    <p style="width: 80%; text-align: justify;">
+        Exploring a machine learning system to generate meaningful combinatorial object images from multiple textual descriptions, emulating human creativity, is a significant challenge as humans are able to construct amazing combinatorial objects, but machines strive to emulate data distribution. In this paper, we develop a straightforward yet highly effective technique called acceptable swap-sampling to generate a combinatorial object image that exhibits novelty and surprise, utilizing text concepts of different objects. Initially, we propose a swapping mechanism that constructs a novel embedding by exchanging column vectors of two text embeddings for generating a new combinatorial image through a cutting-edge diffusion model. Furthermore, we design an acceptable region by managing suitable CLIP distances between the new image and the original concept generations, increasing the likelihood of accepting the new image with a high-quality combination. 
+This region allows us to efficiently sample a small subset from a new image pool generated by using randomly exchanging column vectors. Lastly, we employ a segmentation method to compare CLIP distances among the segmented components, ultimately selecting the most promising image from the sampled subset. Our experiments focus on text pairs of objects from ImageNet, and our results demonstrate that our approach outperforms recent methods such as Stable-Diffusion2<a href="#ref2"><sup>[2]</sup></a> , DALLE2<a href="#ref1"><sup>[1]</sup></a>, ERNIE-ViLG2<a href="#ref3"><sup>[3]</sup></a> and Bing in generating novel and surprising object images, even when the associated concepts appear to be implausible, such as lionfish-abacus and kangaroo-pears. Furthermore, during the sampling process, our approach without training and human preference is also comparable to PickScore<a href="#ref4"><sup>[4]</sup></a> and HPSv2<a href="#ref5"><sup>[5]</sup></a> trained using human preference datasets. 
+    </p>
+
+    <br>
+    <hr>
+    <br>
+    <hr>
+
+
+
+  
+
+
+    <h1>Creative Generation</h1>
+    <p style="width: 80%; TEXT-ALIGN: center">
+        Visual results of combinatorial object generations.
+    </p>
+    <p style="width: 80%; TEXT-ALIGN: center">
+        <b>(Hover mouse to reveal the generated results).</b>
+    </p>
+
+    <div class="row">
+        <div class="column">
+            <div class="row">
+                <div class="column">
+                    <img src="resources/res1/grey fox&Scotch terrier_grey fox.png" alt="corgi" style="width:130px;height:130px">
+                </div>
+                <div class="column">
+                    <div class="empty-smallbox1">
+                        <div class="centered" >+</div>
+                    </div>
+                </div>
+                <div class="column">
+                <img src="resources/res1/grey fox&Scotch terrier_baseline.png" alt="corgi" style="width:130px;height:130px">
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="empty-smallbox2">
+            </div>
+        </div>
+        
+        <div class="column">
+            <div class="row">
+                <div class="column">
+                    <img src="resources/res1/common iguana&sea anemone_common iguana.png" alt="corgi" style="width:130px;height:130px">
+                </div>
+                <div class="column">
+                    <div class="empty-smallbox1">
+                        <div class="centered" >+</div>
+                    </div>
+                </div>
+                <div class="column">
+                <img src="resources/res1/common iguana&sea anemone_sea anemone.png" alt="corgi" style="width:130px;height:130px">
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="empty-smallbox2">
+            </div>
+        </div>
+        
+
+        <div class="column">
+            <div class="row">
+                <div class="column">
+                    <img src="resources/res1/bobsled&barn spider_bobsled.png"alt="corgi" style="width:130px;height:130px">
+                </div>
+                <div class="column">
+                    <div class="empty-smallbox1">
+                        <div class="centered" >+</div>
+                    </div>
+                </div>
+                <div class="column">
+                <img src="resources/res1/bobsled&barn spider_barn spider.png" alt="corgi" style="width:130px;height:130px">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="column">
+            <div class="row">
+                <div class="column">
+                    <div class="empty-smallbox5">
+                        <div class="centered" >grey fox</div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="empty-smallbox6">
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="empty-smallbox5">
+                        <div class="centered" >scotch terrier</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="empty-smallbox7">
+            </div>
+        </div>
+        
+        <div class="column">
+            <div class="row">
+                <div class="column">
+                    <div class="empty-smallbox5">
+                        <div class="centered" >iguana</div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="empty-smallbox6">
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="empty-smallbox5">
+                        <div class="centered" >sea anemone</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="empty-smallbox7">
+            </div>
+        </div>
+        
+
+        <div class="column">
+            <div class="row">
+                <div class="column">
+                    <div class="empty-smallbox5">
+                        <div class="centered" >bobsled</div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="empty-smallbox6">
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="empty-smallbox5">
+                        <div class="centered" >barn spider</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <div class="flip-box">
+                <div class="flip-box-inner">
+                    <div class="flip-box-front">
+                        <img src="resources/unknown.png" alt="unknown" style="width:280px;height:280px">
+                    </div>
+                    <div class="flip-box-back">
+                        <img src="resources/res1/grey fox&Scotch terrier_model_0.28_0.25.png" alt="corgi + coffee machine" style="width:280px;height:280px">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="empty-smallbox4">
+            </div>
+        </div>
+        
+
+   
+
+        <div class="column">
+            <div class="flip-box">
+                <div class="flip-box-inner">
+                    <div class="flip-box-front">
+                        <img src="resources/unknown.png" alt="unknown" style="width:280px;height:280px">
+                    </div>
+                    <div class="flip-box-back">
+                        <img src="resources/res1/common iguana&sea anemone_model_0.18_0.17.png" alt="corgi + coffee machine" style="width:280px;height:280px">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="empty-smallbox4">
+            </div>
+        </div>
+      
+
+        <div class="column">
+            <div class="flip-box">
+                <div class="flip-box-inner">
+                    <div class="flip-box-front">
+                        <img src="resources/unknown.png" alt="unknown" style="width:280px;height:280px">
+                    </div>
+                    <div class="flip-box-back">
+                        <img src="resources/res1/bobsled&barn spider_model_0.14_0.21.png" alt="corgi + coffee machine" style="width:280px;height:280px">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>  
+        
+
+
+    
+    <br><br>
+    <br><br>
+
+
+    <div class="row">
+        <div class="column">
+            <div class="row">
+                <div class="column">
+                    <img src="resources/res1/beer glass&tiger beetle_beer glass.png" alt="corgi" style="width:130px;height:130px">
+                </div>
+                <div class="column">
+                    <div class="empty-smallbox1">
+                        <div class="centered" >+</div>
+                    </div>
+                </div>
+                <div class="column">
+                <img src="resources/res1/bobsled&barn spider_barn spider.png" alt="corgi" style="width:130px;height:130px">
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="empty-smallbox2">
+            </div>
+        </div>
+        
+        <div class="column">
+            <div class="row">
+                <div class="column">
+                    <img src="resources/res1/bee eater&golf ball_bee eater.png" alt="corgi" style="width:130px;height:130px">
+                </div>
+                <div class="column">
+                    <div class="empty-smallbox1">
+                        <div class="centered" >+</div>
+                    </div>
+                </div>
+                <div class="column">
+                <img src="resources/res1/bee eater&golf ball_golf ball.png" alt="corgi" style="width:130px;height:130px">
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="empty-smallbox2">
+            </div>
+        </div>
+        
+
+        <div class="column">
+            <div class="row">
+                <div class="column">
+                    <img src="resources/res1/agama&red wine_agama.png" alt="corgi" style="width:130px;height:130px">
+                </div>
+                <div class="column">
+                    <div class="empty-smallbox1">
+                        <div class="centered" >+</div>
+                    </div>
+                </div>
+                <div class="column">
+                <img src="resources/res1/agama&red wine_red wine.png" alt="corgi" style="width:130px;height:130px">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <div class="row">
+                <div class="column">
+                    <div class="empty-smallbox5">
+                        <div class="centered" >beer glass</div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="empty-smallbox6">
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="empty-smallbox5">
+                        <div class="centered" >tiger beetle</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="empty-smallbox7">
+            </div>
+        </div>
+        
+        <div class="column">
+            <div class="row">
+                <div class="column">
+                    <div class="empty-smallbox5">
+                        <div class="centered" >bee eater</div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="empty-smallbox6">
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="empty-smallbox5">
+                        <div class="centered" >golfball</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="empty-smallbox7">
+            </div>
+        </div>
+        
+
+        <div class="column">
+            <div class="row">
+                <div class="column">
+                    <div class="empty-smallbox5">
+                        <div class="centered" >agama</div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="empty-smallbox6">
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="empty-smallbox5">
+                        <div class="centered" >wine</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <div class="flip-box">
+                <div class="flip-box-inner">
+                    <div class="flip-box-front">
+                        <img src="resources/unknown.png" alt="unknown" style="width:280px;height:280px">
+                    </div>
+                    <div class="flip-box-back">
+                        <img src="resources/res1/beer glass&tiger beetle_model_0.2_0.24.png" alt="corgi + coffee machine" style="width:280px;height:280px">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        
+        <div class="column">
+            <div class="empty-smallbox4">
+            </div>
+        </div>
+   
+
+        <div class="column">
+            <div class="flip-box">
+                <div class="flip-box-inner">
+                    <div class="flip-box-front">
+                        <img src="resources/unknown.png" alt="unknown" style="width:280px;height:280px">
+                    </div>
+                    <div class="flip-box-back">
+                        <img src="resources/res1/bee eater&golf ball_model_0.22_0.22.png" style="width:280px;height:280px">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="empty-smallbox4">
+            </div>
+        </div>
+      
+
+        <div class="column">
+            <div class="flip-box">
+                <div class="flip-box-inner">
+                    <div class="flip-box-front">
+                        <img src="resources/unknown.png" alt="unknown" style="width:280px;height:280px">
+                    </div>
+                    <div class="flip-box-back">
+                        <img src="resources/res1/agama&red wine_model_0.25_0.17.png" alt="corgi + coffee machine" style="width:280px;height:280px">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+    <br><br>
+    <hr>
+
+    <!-- <h1>Our framework</h1>
+    <p style="text-align: justify">
+        The pipeline of our acceptable swap-sampling method. Starting from text embeddings by
+inputting two given texts into the text encoder, we introduce a swapping operation to collect a set F
+of randomly swapping vectors for novel embeddings, then generate a new image set I, and propose
+an acceptable region to build a sampling method for selecting an optimal combinatorial object image.
+    </p>
+
+
+    <img style="width: 80%;" src="./resources/fig_framework.png" alt="Teaser figure."/>
+    <br> -->
+
+      <h1>Results Comparasion</h1>
+      <h2>Visual Comparision</h2>
+          <p style="text-align: center">
+            Visual comparisons of combinatorial object generations. We compare our ASS method with the SOTA T2I models, Stable-Diffusion2<a href="#ref2"><sup>[2]</sup></a> , DALLE2<a href="#ref1"><sup>[1]</sup></a>, ERNIE-ViLG2(Baidu)<a href="#ref3"><sup>[3]</sup></a> , and Bing(Microsoft). 
+          </p>
+
+
+    <img style="width: 80%;" src="./resources/fig_cmp1.jpg" alt="Teaser figure."/>
+    <br> <br>
+    <hr>
+      <h2>Sampling Comparision</h2>
+          <p style="text-align: center">
+              Sampling visualizations compared our ASS with the SOTA human-evaluation methods: HPSv2<a href="#ref5"><sup>[5]</sup></a> and PickScore<a href="#ref4"><sup>[4]</sup></a>
+          </p>
+
+
+
+
+    <img style="width: 80%;" src="./resources/fig_HPT.jpg" alt="Teaser figure."/>
+
+    <br> <br>
+    <hr>
+    <h1>More Results</h1>
+      <h2>Different Styles Generation</h2>
+
+
+    <p style="TEXT-ALIGN: center">
+        Generalizations using four different styles including aquarelle, line-art, cartoon, and ink painting.
+    </p>
+      <img style="width: 80%;" src="./resources/fig_style.jpg" alt="Teaser figure."/>
+
+    <br><br>
+    <hr>
+      <h2>Fix one with another</h2>
+
+
+    <p style="TEXT-ALIGN: center">
+        We fixed two words:bea eater and green lizard, to generalize different results.
+    </p>
+      
+    <div class="row">
+        <div class="column">
+                    <img src="resources/fix/bee eater.png" alt="pagoda + lamp" style="width:180px;height:180px">
+                </div>
+       
+        <div class="column">
+            <div class="empty-smallbox9">
+                <div class="centered" >+</div>
+            </div>
+        </div>
+        
+        <div class="column">
+            <div class="flip-box2">
+                <div class="flip-box2-inner">
+                    <div class="flip-box2-front">
+                    <img src="resources/fix/electric guitar.png" alt="pagoda + lamp" style="width:180px;height:180px">
+                        
+                    </div>
+                    <div class="flip-box2-back">
+                        <img src="resources/fix/bee eater&electric guitar_model_0.13_0.25.png" alt="pagoda" style="width:180px;height:180px">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="flip-box2">
+                <div class="flip-box2-inner">
+                    <div class="flip-box-front">
+                    <img src="resources/fix/Irish wolfhound.png" alt="pagoda + lamp" style="width:180px;height:180px">
+                       
+                    </div>
+                    <div class="flip-box2-back">
+                        <img src="resources/fix/bee eater&Irish wolfhound_model_0.26_0.26.png" alt="pagoda" style="width:180px;height:180px">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="flip-box2">
+                <div class="flip-box2-inner">
+                    <div class="flip-box2-front">
+                    <img src="resources/fix/redbone.png" alt="pagoda + lamp" style="width:180px;height:180px">
+                        
+                    </div>
+                    <div class="flip-box2-back">
+                        <img src="resources/fix/bee eater&redbone_model_0.28_0.17.png" alt="pagoda" style="width:180px;height:180px">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="column">
+            <div class="flip-box2">
+                <div class="flip-box2-inner">
+                    <div class="flip-box2-front">
+                    <img src="resources/fix/tree frog.png" alt="pagoda + lamp" style="width:180px;height:180px">
+                       
+                    </div>
+                    <div class="flip-box2-back">
+                        <img src="resources/fix/bee eater&tree frog_model_0.23_0.27.png" alt="pagoda" style="width:180px;height:180px">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="row">
+        <div class="column">
+            <div class="empty-smallbox8">
+                <div class="centered" >bee eater</div>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="empty-smallbox6">
+                <div class="centered" ></div>
+            </div>
+        </div>
+
+
+
+    
+    
+        <div class="column">
+            <div class="empty-smallbox8">
+                <div class="centered" >electric guitar</div>
+            </div>
+        </div>
+    
+        <div class="column">
+            <div class="empty-smallbox8">
+                <div class="centered" >Irish wolfhound</div>
+            </div>
+        </div>
+    
+        <div class="column">
+            <div class="empty-smallbox8">
+                <div class="centered" >redbone</div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="empty-smallbox8">
+                <div class="centered" >tree frog</div>
+            </div>
+        </div>
+     </div>
+
+     
+    <div class="row">
+        <div class="column">
+                    <img src="resources/fix/green lizard.png" alt="pagoda + lamp" style="width:180px;height:180px">
+                </div>
+       
+
+        <div class="column">
+            <div class="empty-smallbox9">
+                <div class="centered" >+</div>
+            </div>
+        </div>
+        
+        <div class="column">
+            <div class="flip-box2">
+                <div class="flip-box2-inner">
+                    <div class="flip-box2-front">
+                    <img src="resources/fix/Border terrier.png" alt="pagoda + lamp" style="width:180px;height:180px">
+                        
+                    </div>
+                    <div class="flip-box2-back">
+                        <img src="resources/fix/green lizard&Border terrier_model_0.27_0.18.png" alt="pagoda" style="width:180px;height:180px">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="flip-box2">
+                <div class="flip-box2-inner">
+                    <div class="flip-box-front">
+                    <img src="resources/fix/head cabbage.png" alt="pagoda + lamp" style="width:180px;height:180px">
+                       
+                    </div>
+                    <div class="flip-box2-back">
+                        <img src="resources/fix/green lizard&head cabbage_model_0.27_0.26.png" alt="pagoda" style="width:180px;height:180px">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="flip-box2">
+                <div class="flip-box2-inner">
+                    <div class="flip-box2-front">
+                    <img src="resources/fix/killer whale.png" alt="pagoda + lamp" style="width:180px;height:180px">
+                        
+                    </div>
+                    <div class="flip-box2-back">
+                        <img src="resources/fix/green lizard&killer whale_model_0.27_0.19.png" alt="pagoda" style="width:180px;height:180px">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="column">
+            <div class="flip-box2">
+                <div class="flip-box2-inner">
+                    <div class="flip-box2-front">
+                    <img src="resources/fix/silky terrier.png" alt="pagoda + lamp" style="width:180px;height:180px">
+                       
+                    </div>
+                    <div class="flip-box2-back">
+                        <img src="resources/fix/green lizard&silky terrier_model_0.23_0.28.png" alt="pagoda" style="width:180px;height:180px">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="row">
+        <div class="column">
+            <div class="empty-smallbox8">
+                <div class="centered" >green lizard</div>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="empty-smallbox6">
+                <div class="centered" ></div>
+            </div>
+        </div>
+
+
+
+    
+    
+        <div class="column">
+            <div class="empty-smallbox8">
+                <div class="centered" >Border terrier</div>
+            </div>
+        </div>
+    
+        <div class="column">
+            <div class="empty-smallbox8">
+                <div class="centered" >head cabbage</div>
+            </div>
+        </div>
+    
+        <div class="column">
+            <div class="empty-smallbox8">
+                <div class="centered" >killer whale</div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="empty-smallbox8">
+                <div class="centered" >silky terrier</div>
+            </div>
+        </div>
+     </div>
+
+    <br><br>
+    <hr>
+
+    
+    <h2>More visual results</h2>
+    <img style="width: 85%;" src="resources/more_res.jpg"
+         alt="Semantic style transfer results"/>
+    <br><br>
+    <hr>
+
+    <h2>References</h2>
+    <blockquote>
+        <p id="ref1">[1]Aditya Ramesh, Prafulla Dhariwal, Alex Nichol, Casey Chu, and Mark Chen. Hierarchical text-
+            conditional image generation with clip latents. In arXiv:2204.06125, 2022.</p>
+        <p id="ref2">[2]Robin Rombach, Andreas Blattmann, Dominik Lorenz, Patrick Esser, and Bj ̈orn Ommer. High-
+            resolution image synthesis with latent diffusion models. In Proceedings of the IEEE/CVF
+            Conference on Computer Vision and Pattern Recognition (CVPR), pp. 10684–10695, 2022.</p>
+        <p id="ref3">[3]Zhida Feng, Zhenyu Zhang, Xintong Yu, Yewei Fang, Lanxin Li, Xuyi Chen, Yuxiang Lu, Ji-
+            axiang Liu, Weichong Yin, Shikun Feng, Yu Sun, Hao Tian, Hua Wu, and Haifeng Wang.
+            Ernie-vilg 2.0: Improving text-to-image diffusion model with knowledge-enhanced mixture-of-
+            denoising-experts. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern
+            Recognition (CVPR), pp. 10135–10145.2023.</p>
+        <p id="ref4">[4]Yuval Kirstain, Adam Polyak, Uriel Singer, Shahbuland Matiana, Joe Penna, and Omer Levy.
+            Pick-a-pic: An open dataset of user preferences for text-to-image generation. arXiv preprint
+            arXiv:2305.01569, 2023.</p>    
+        <p id="ref5">[5]Xiaoshi Wu, Yiming Hao, Keqiang Sun, Yixiong Chen, Feng Zhu, Rui Zhao, and Hongsheng Li.
+            Human preference score v2: A solid benchmark for evaluating human preferences of text-to-image
+            synthesis. arXiv preprint arXiv:2306.09341, 2023.</p>        
+      </blockquote>
+    
+    <br>
+    <hr>
+
+
+<script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
+    
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+    
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+    
+    function showSlides(n) {
+      let i;
+      let slides = document.getElementsByClassName("mySlides");
+      let dots = document.getElementsByClassName("dot");
+      if (n > slides.length) {slideIndex = 1}    
+      if (n < 1) {slideIndex = slides.length}
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+      }
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex-1].style.display = "block";  
+      dots[slideIndex-1].className += " active";
+    }
+</script>
+
+</body>
+
+</html>
