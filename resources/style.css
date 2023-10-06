@@ -277,8 +277,79 @@ a:hover {
   transform: rotateY(180deg);
 }
 
+/* The flip box container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+.flip-box2 {
+  display: block;
+  background-color: transparent;
+  width: 180px;
+  height: 180px;
+  border: 1px solid #f1f1f1;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+ /* This container is needed to position the front and back side */
+ .flip-box2-inner {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
 
 
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-box3:hover .flip-box3-inner {
+  display: block;
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-box3-front, .flip-box3-back {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-box3-front {
+  display: block;
+  background-color: #bbb;
+  color: black;
+}
+
+/* Style the back side */
+.flip-box3-back {
+  display: block;
+  background-color: rgb(0, 0, 0);
+  color: white;
+  transform: rotateY(180deg);
+}
+
+/* The flip box container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+.flip-box3 {
+  display: block;
+  background-color: transparent;
+  width: 165px;
+  height: 165px;
+  border: 1px solid #f1f1f1;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+ /* This container is needed to position the front and back side */
+ .flip-box3-inner {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
 
 
 
@@ -316,6 +387,7 @@ a:hover {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    
   }
 
 /* Bottom right text */
@@ -435,7 +507,15 @@ a:hover {
     perspective: 1000px; /* Remove this if you don't want the 3D effect */
     font-size:x-large; 
   }
-
+  .empty-smallbox10 {
+    display: block;
+    background-color: transparent;
+    width: 80px;
+    height: 10px;
+    border: 0px solid #f1f1f1;
+    perspective: 1000px; /* Remove this if you don't want the 3D effect */
+    font-size:x-large; 
+  }
 
 
 
