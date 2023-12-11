@@ -699,21 +699,26 @@ an acceptable region to build a sampling method for selecting an optimal combina
     
     <h1>Comparing Results</h1>
     <h2>Visual Comparision</h2>
-        <p style="text-align: center">
+        <!-- <p style="text-align: center">
             We conduct visual comparisons to assess the generation of combinatorial objects. In this analysis, we evaluate our ASS method against state-of-the-art T2I models, including Stable-Diffusion2<a href="#ref2"><sup>[2]</sup></a> , DALLE2<a href="#ref1"><sup>[1]</sup></a>, ERNIE-ViLG2(Baidu)<a href="#ref3"><sup>[3]</sup></a> , and Bing(Microsoft). 
         </p>
             <p style="text-align: center">
                 We compare our ASS results to other T2I models with the general prompt 'Hybrid of [p1] and [p2]'.
-            </p>
+            </p> -->
+        
 
-        <img style="width: 80%;" src="./resources/cmp_1.png" alt="Teaser figure."/>
+        <p style="text-align: justify">
+            Visual comparisons of combinatorial object generations. We compare our ASS method with Stable-Diffusion2 <a href="#ref2"><sup>[2]</sup></a>, DALLE2<a href="#ref1"><sup>[1]</sup></a>,
+            ERNIE-ViLG2 (Baidu)<a href="#ref3"><sup>[3]</sup></a>  and Bing (Microsoft) using the prompt ’Hybrid of [prompt1] and [prompt2]’. The results reveal that our model
+            outperforms these counterparts in terms of its creative combinatorial. Moreover, our results exhibit significant dissimilarity from the images
+            retrieved from the LAION-5B dataset<a href="#ref6"><sup>[6]</sup></a>in the first row. This directly illustrates our model’s ability to generate out-of-distribution images.
+            For more fair comparison, in addition, we also use intricate textual descriptions in conjunction with our generated images as input prompts.
+            However, these models have not yet demonstrated the capability to produce results that closely match our own.        </p>
 
-        <br> <br>
-            <p style="text-align: center">
-               Visual comparison using intricate textual descriptions in conjunction with our generated images as input prompt. 
-            </p>
 
-        <img style="width: 80%;" src="./resources/cmp_2.png" alt="Teaser figure."/>
+        
+        <img style="width: 80%;" src="./resources/Comparing Results.png" alt="Teaser figure."/>
+
 
         
     <br> <br>
@@ -1681,6 +1686,7 @@ an acceptable region to build a sampling method for selecting an optimal combina
         <p id="ref5">[5]Xiaoshi Wu, Yiming Hao, Keqiang Sun, Yixiong Chen, Feng Zhu, Rui Zhao, and Hongsheng Li.
             Human preference score v2: A solid benchmark for evaluating human preferences of text-to-image
             synthesis. arXiv preprint arXiv:2306.09341, 2023.</p>        
+        <p id="ref6">[6]Schuhmann C, Beaumont R, Vencu R, et al. Laion-5b: An open large-scale dataset for training next generation image-text models[J]. Advances in Neural Information Processing Systems, 2022, 35: 25278-25294.</p>        
       </blockquote>
     
     <br>
