@@ -53,6 +53,41 @@
     <br><br>
     <br><br>
 
+    
+
+
+   
+
+    <br>
+    <p style="width: 80%; text-align: justify;font-size: 16px;font-family: 'Times New Roman', Times, serif;">
+        We propose a simple yet effective sampling method without any training to generate new 
+          and meaningful combinations from two given object texts in text-to-image synthesis. 
+          The original images of each object text using Stable-Diffusion2<a href="#ref2"><sup>[2]</sup></a> are displayed in the 
+          top row, while the bottom row showcases the amazing combinations produced by our sampling algorithm.
+    </p>
+    <br>
+    <hr>
+
+    <h1>Abstract</h1>
+    <p style="width: 80%; text-align: justify;">
+        Generating creative combinatorial objects from two object texts poses a significant challenge for the text-to-image synthesis, often hindered by a focus on emulating existing data distributions. In this paper, we develop a straightforward yet highly effective method, 
+          called balance swap-sampling. First, we propose a swapping mechanism that generates a novel combinatorial object image set by randomly exchanging intrinsic elements of two text embeddings through a cutting-edge diffusion model. Second, we introduce a balance swapping 
+          region to efficiently sample a small subset from the newly generated image set by managing balance CLIP distances between the new images and their original generations, increasing the likelihood of accepting the high-quality combinations. Last, we employ a segmentation 
+          method to compare CLIP distances among the segmented components, ultimately selecting the most promising object from the sampled subset. Our experiments on text pairs of objects from ImageNet showcase that our approach outperforms recent SOTA T2I methods, even the associated 
+          concepts appear to be implausible, such as lionfish-abacus, and monarch-cheetah</p>
+
+    <br>
+    <hr>
+   
+
+
+  
+
+
+    <h1>Creative Generation</h1>
+    <p style="width: 80%; TEXT-ALIGN: center">
+        Visual results of combinatorial object generations.
+    </p>
     <div class="row">
         <div class="column">
             <div class="row">
@@ -275,41 +310,6 @@
             </div>
         </div>
     </div>
-
-
-   
-
-    <br>
-    <p style="width: 80%; text-align: justify;font-size: 16px;font-family: 'Times New Roman', Times, serif;">
-        We propose a simple yet effective sampling method without any training to generate new 
-          and meaningful combinations from two given object texts in text-to-image synthesis. 
-          The original images of each object text using Stable-Diffusion2<a href="#ref2"><sup>[2]</sup></a> are displayed in the 
-          top row, while the bottom row showcases the amazing combinations produced by our sampling algorithm.
-    </p>
-    <br>
-    <hr>
-
-    <h1>Abstract</h1>
-    <p style="width: 80%; text-align: justify;">
-        Generating creative combinatorial objects from two object texts poses a significant challenge for the text-to-image synthesis, often hindered by a focus on emulating existing data distributions. In this paper, we develop a straightforward yet highly effective method, 
-          called balance swap-sampling. First, we propose a swapping mechanism that generates a novel combinatorial object image set by randomly exchanging intrinsic elements of two text embeddings through a cutting-edge diffusion model. Second, we introduce a balance swapping 
-          region to efficiently sample a small subset from the newly generated image set by managing balance CLIP distances between the new images and their original generations, increasing the likelihood of accepting the high-quality combinations. Last, we employ a segmentation 
-          method to compare CLIP distances among the segmented components, ultimately selecting the most promising object from the sampled subset. Our experiments on text pairs of objects from ImageNet showcase that our approach outperforms recent SOTA T2I methods, even the associated 
-          concepts appear to be implausible, such as lionfish-abacus, and monarch-cheetah</p>
-
-    <br>
-    <hr>
-   
-
-
-  
-
-
-    <h1>Creative Generation</h1>
-    <p style="width: 80%; TEXT-ALIGN: center">
-        Visual results of combinatorial object generations.
-    </p>
-
     <div class="row">
         <div class="column">
             <div class="row">
