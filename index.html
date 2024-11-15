@@ -60,29 +60,32 @@
    
 
     <br>
-    <p style="width: 80%; text-align: justify;font-size: 16px;font-family: 'Times New Roman', Times, serif;">
-        We propose a simple yet effective sampling method without any training to generate creative combinations from two object texts. 
-          Bottom row: original images from Stable-Diffusion2<a href="#ref2"><sup>[2]</sup></a>. 
-          Middle row: combinations produced by our algorithm. 
-          Top row: artworks by <i>Les Créatonautes</i><a href="#ref7"><sup>[7]</sup></a>, a French creative agency. Remarkably, the objects we create rival the artistry of masterpieces crafted by artists.
-    </p>
-    <br>
+        <p style="width: 80%; text-align: justify;font-size: 16px;font-family: 'Times New Roman', Times, serif;">
+            We propose a simple yet effective approach to create new 3D objects by combining a 3D model with another object text. Our
+algorithm successfully generates surprising and novel 3D models.
+        </p>
+        <br>
     <hr>
 
     <h1>Abstract</h1>
-    <p style="width: 80%; text-align: justify;">
-        Generating creative combinatorial objects from two object texts poses a significant challenge for the text-to-image synthesis, often hindered by a focus on emulating existing data distributions. In this paper, we develop a straightforward yet highly effective method, 
+        <p style="width: 80%; text-align: justify;">
+        <!-- Generating creative combinatorial objects from two object texts poses a significant challenge for the text-to-image synthesis, often hindered by a focus on emulating existing data distributions. In this paper, we develop a straightforward yet highly effective method, 
           called balance swap-sampling. First, we propose a swapping mechanism that generates a novel combinatorial object image set by randomly exchanging intrinsic elements of two text embeddings through a cutting-edge diffusion model. Second, we introduce a balance swapping 
           region to efficiently sample a small subset from the newly generated image set by managing balance CLIP distances between the new images and their original generations, increasing the likelihood of accepting the high-quality combinations. Last, we employ a segmentation 
           method to compare CLIP distances among the segmented components, ultimately selecting the most promising object from the sampled subset. Our experiments on text pairs of objects from ImageNet showcase that our approach outperforms recent SOTA T2I methods, even the associated 
-          concepts appear to be implausible, such as lionfish-abacus, and monarch-cheetah.</p>
+          concepts appear to be implausible, such as lionfish-abacus, and monarch-cheetah. -->
+
+          In this paper, we tackle a new task of 3D object synthesis, where a 3D model is combined with another object text to create a novel 3D model. 
+          However, most existing text/image/3D-to-3D methods struggle to effectively integrate multiple content sources, often resulting in inconsistent textures and inaccurate shapes. 
+          To overcome these challenges, we propose a straightforward yet powerful approach, Text+3D-to-3D (T33D), for generating novel and compelling 3D models. 
+          Our method begins by rendering multi-view images and normal maps from the input 3D model, then generating a novel, surprising 2D object using ATIH with the front-view image and the another object text as inputs. 
+          To ensure texture consistency, we introduce texture multi-view diffusion, which refines the textures of the remaining multi-view RGB images based on the novel 2D object. 
+          For enhanced shape accuracy, we propose shape multi-view diffusion to improve the 2D shapes of both the multi-view RGB images and the normal maps, also conditioned on the novel 2D object. 
+          Finally, these outputs are used to reconstruct a complete and novel 3D model. Extensive experiments demonstrate the effectiveness of our method, yielding impressive 3D creations.
+        </p>
 
     <br>
     <hr>
-   
-
-
-  
 
 
     <h1>Creative Generation</h1>
