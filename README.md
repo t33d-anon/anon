@@ -1,1 +1,2 @@
-# Amazing Combinatorial Creation: Acceptable Swap-Sampling for Text-to-Image Generation
+# T323D: Creative Text+3D-to-3D Object Generation via Multi-view Inversion
+
