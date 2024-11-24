@@ -2,7 +2,7 @@
 
 <p align="center">
 <br>
-    <img src="resources\images\0-first.png">
+    <img src="resources\images\frist_fig_page-0001.jpg">
 <br>
 <p
 
