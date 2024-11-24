@@ -6,18 +6,18 @@
 
 <html lang="en">
 <head>
-  	<title> T323D: Creative Text+3D-to-3D Object Generation via Multi-view Inversion </title>
+  	<title>Novel Object Synthesis via Adaptive Text-Image Harmony</title>
       <!-- Facebook automatically scrapes this. Go to https://developers.facebook.com/tools/debug/
           if you update and want to force Facebook to re-scrape. -->
-  	<meta property="og:image" content="./resources/fig_0.png"/>
-  	<meta property="og:title" content="TP2O: Creative Text Pair-to-Object Generation using Balance Swap-Sampling." />
-  	<meta property="og:description" content="A simple yet effective sampling method without any training to generate new and meaningful combinations from two given object texts in text-to-image synthesis." />
+  	<meta property="og:image" content="./resources/first_fig2.png"/>
+  	<meta property="og:title" content="Novel Object Synthesis via Adaptive Text-Image Harmony" />
+  	<!-- <meta property="og:description" content="A method for synthesizing a new object by mixing two different concepts using text-to-image diffusion models." /> -->
     <!-- Twitter automatically scrapes this. Go to https://cards-dev.twitter.com/validator?
         if you update and want to force Twitter to re-scrape. -->
     <meta property="twitter:card"          content="summary" />
-    <meta property="twitter:title"         content="TP2O: Creative Text Pair-to-Object Generation using Balance Swap-Sampling." />
-    <meta property="twitter:description"   content="A simple yet effective sampling method without any training to generate new and meaningful combinations from two given object texts in text-to-image synthesis." />
-    <meta property="twitter:image"         content="./resources/fig_0.png" />
+    <meta property="twitter:title"         content="Novel Object Synthesis via Adaptive Text-Image Harmony" />
+    <!-- <meta property="twitter:description"   content="A method for synthesizing a new object by mixing two different concepts using text-to-image diffusion models." /> -->
+    <meta property="twitter:image"         content="./resources/first_fig2.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Add your Google Analytics tag here -->
@@ -31,1524 +31,918 @@
         gtag('js', new Date());
         gtag('config', 'UA-97476543-1');
     </script>
+    <!-- <style>
 
+        .author-list {
+            text-align: center;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        .affiliations {
+            text-align: center;
+            font-size: 16px;
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+        .emails {
+            text-align: center;
+            font-size: 14px;
+            margin-top: 10px;
+            font-family: monospace;
+        }
+        sup {
+            font-size: smaller;
+        }
+    </style> -->
+    <style>
+
+
+        body {
+            font-family: 'Georgia', serif;
+            margin: 50px;
+            line-height: 1.6;
+        }
+
+        /* Abstract and Section Title Styles */
+        h1 {
+            font-family: 'Helvetica Neue', sans-serif;
+            font-size: 36px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Abstract Paragraph Style */
+        p {
+            font-size: 18px;
+            color: #444;
+            text-align: justify;
+            margin: 0 auto;
+            width: 80%;
+            line-height: 1.8;
+        }
+
+        /* Emphasizing ATIH */
+        b {
+            font-weight: bold;
+            color: #000;
+        }
+
+        /* Body overall style */
+        
+        /* Title style */
+        .title {
+            font-size: 48px;
+            font-weight: bold;
+            background: linear-gradient(90deg, #E88872, #BB89C9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        /* Subtitle style */
+        .subtitle {
+            
+            font-size: 36px;
+            font-weight: normal;
+            margin-bottom: 10px;
+        }
+
+        /* Conference and year */
+        .conference {
+            
+            font-size: 30px;
+            color: #0f0e0e; 
+            margin-bottom: 2px;
+        }
+
+        /* Author list */
+        .authors {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .authors a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        .authors a:hover {
+            text-decoration: underline;
+        }
+
+        .affiliation {
+            font-size: 16px;
+            color: #777;
+        }
+
+        /* Equal contribution note */
+        .equal-contribution {
+            font-size: 14px;
+            font-style: italic;
+            margin-top: 10px;
+        }
+
+        /* Button style */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 40px;
+        }
+        
+        /* Button styles */
+        .btn-icon {
+            background-color: #333; /* 按钮原有的颜色 */
+            color: white; /* 文字为白色 */
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: bold; /* 加粗文字 */
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .btn-icon i {
+            margin-right: 8px;
+            color: white; /* 图标也为白色 */
+            font-size: 18px; /* 图标大小合适 */
+        }
+        
+        /* White text on dark background */
+        .btn-icon span {
+            color: white; /* 文字颜色为白色 */
+            font-weight: bold; /* 加粗文字 */
+        }
+        
+        /* Button hover effect */
+        .btn-icon:hover {
+            background-color: #555; /* 悬停时按钮变浅灰色 */
+        }
+        .flip-box {
+            display: block;
+            background-color: transparent;
+            width: 224px;
+            height: 224px;
+            /* border: 1px solid #f1f1f1; */
+            perspective: 1000px; /* Remove this if you don't want the 3D effect */
+          }
+        .flip-box-front p, .flip-box-back p {
+            margin: 0;
+            padding: 1px;
+            /* background-color: #f5f5f5; */
+            text-align: center;
+            font-weight: bold;
+            font-size: 22px;
+            background-color: transparent;
+            flex-shrink: 0;
+            color: #333;
+          }
+          .flip-box {
+            display: block;
+            background-color: transparent;
+            width: 224px;
+            height: 224px;
+            /* border: 1px solid #f1f1f1; */
+            perspective: 1000px; /* Remove this if you don't want the 3D effect */
+          }
+          .flip-box_home {
+            display: block;
+            background-color: transparent;
+            /* border: 1px solid #f1f1f1; */
+            perspective: 1000px;
+          }
+          /* This container is needed to position the front and back side */
+          .flip-box-inner {
+            display: block;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+          }
+          
+          /* Do an horizontal flip when you move the mouse over the flip box container */
+          .flip-box:hover .flip-box-inner {
+            display: block;
+            transform: rotateY(180deg);
+          }
+          
+          /* Position the front and back side */
+          .flip-box-front, .flip-box-back {
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            -webkit-backface-visibility: hidden; /* Safari */
+            backface-visibility: hidden;
+            justify-content: space-between; /* 确保文本和图片有足够的空间 */
+            align-items: center;
+          }
+    </style>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
 </head>
 
 <body>
 <div class="container">
-    <div class="title">
-        T323D: Creative Text+3D-to-3D Object Generation via Multi-view Inversion
+    <!-- <div class="author">
+        <a href="https://scholar.google.com.sg/citations?user=8gm-CYYAAAAJ">Jun Hao Liew</a><sup>*</sup>
     </div>
-
-    <!-- <div class="venue">
-        In ECCV 2024
+    <div class="author">
+        <a href="https://hanshuyan.github.io/">Hanshu Yan</a><sup>*</sup>
+    </div>
+    <div class="author">
+        <a href="https://scholar.google.com/citations?user=DdCAbWwAAAAJ">Daquan Zhou</a><sup></sup>
+    </div>
+    <div class="author">
+        <a href="https://sites.google.com/site/jshfeng/home">Jiashi Feng</a><sup></sup>
     </div> -->
 
-    <br><br>
+    <!-- <br><br>
 
-    <div class="author">
-        <a>Anonymous authors</a>
+    <div class="affiliation"><sup>&nbsp;</sup>ByteDance</div>
+
+    <br><br> -->
+
+    <!-- <div class="links"><a href="https://arxiv.org/abs/2210.16056">[Paper]</a></div> -->
+    <!-- <div class="links"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">[Video]</a></div>
+    <div class="links"><a href="https://github.com/elliottwu/webpage-template">[Code]</a></div> -->
+    <!-- <div class="author">
+      <a>Anonymous authors</a>
+    </div>
+    <br><br> -->
+    <!-- <div class="title">DiverseDream</div> -->
+    <div class="title">
+        Novel Text+3D-to-3D Object Generation via Texture and Shape Multi-view Diffusion
+        </div>
+    <br>
+    <!-- Conference Info -->
+    <!-- <div class="conference">NeurIPS 2024</div> -->
+    <!-- <br><br> -->
+    <!-- Author List -->
+    <div class="authors">
+        Zeren Xiong<sup>1</sup>, Zedong Zhang<sup>1</sup>, Zikun Chen<sup>1</sup>, Shuo Chen<sup>2</sup>,<br>
+        Xiang Li<sup>3</sup>, Gan Sun<sup>4</sup>, Jian Yang<sup>1</sup>, Jun Li<sup>1*</sup>
+    </div>
+    <br>
+    <div class="affiliation">
+        <sup>1</sup>Nanjing University of Science and Technology
+        <sup>2</sup>RIKEN<br>
+        <sup>3</sup>Nankai University
+        <sup>4</sup>South China University of Technology
+    </div><br>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <div class="button-container">
+        <!-- <a href="http://arxiv.org/abs/2410.20823" class="btn-icon">
+            <i class="fas fa-file-pdf"></i><span>Paper</span>
+        </a> -->
+        <a href="http://arxiv.org/abs/2410.20823" class="btn-icon">
+            <i class="fas fa-file-alt"></i><span>ArXiv</span>
+        </a>
+        <!-- <a href="#" class="btn-icon">
+            <i class="fas fa-video"></i><span>Video</span>
+        </a> -->
+        <a href="#" class="btn-icon">
+            <i class="fab fa-github"></i><span>Code<small>(Coming Soon)</small></span>
+        </a>
+        <a href="https://drive.google.com/file/d/1PsyWxqtBGb-545nPRlpX8VMcW2WTERCc/view?usp=sharing" class="btn-icon">
+            <i class="fas fa-hdd"></i><span>Dataset</span>
+        </a>
+        <!-- <a href="https://drive.google.com/file/d/1PsyWxqtBGb-545nPRlpX8VMcW2WTERCc/view?usp=sharing" class="btn-icon">
+            <i class="fab fa-github"></i><span>Dataset</span>
+        </a> -->
     </div>
 
-    <br><br>
-    <br><br>
 
-    
-    <img style="width: 80%;" src="resources\images\0-first.png" alt="Teaser figure."/>
     <br><br>
+    <img style="width: 87%;" src="resources\images\0-first.png" alt="Teaser figure."/>
+    <!-- <br>
+    <p style="width: 80%; TEXT-ALIGN: center">
+        Our MagicMix allows mixing of two different semantics to create a novel concept.
+    </p> -->
 
-   
-
-    <br>
-        <p style="width: 80%; text-align: justify;font-size: 16px;font-family: 'Times New Roman', Times, serif;">
-            We propose a simple yet effective approach to create new 3D objects by combining a 3D model with another object text. Our
-algorithm successfully generates surprising and novel 3D models.
-        </p>
-        <br>
+    <br><br>
     <hr>
 
     <h1>Abstract</h1>
-        <p style="width: 80%; text-align: justify;">
-        <!-- Generating creative combinatorial objects from two object texts poses a significant challenge for the text-to-image synthesis, often hindered by a focus on emulating existing data distributions. In this paper, we develop a straightforward yet highly effective method, 
-          called balance swap-sampling. First, we propose a swapping mechanism that generates a novel combinatorial object image set by randomly exchanging intrinsic elements of two text embeddings through a cutting-edge diffusion model. Second, we introduce a balance swapping 
-          region to efficiently sample a small subset from the newly generated image set by managing balance CLIP distances between the new images and their original generations, increasing the likelihood of accepting the high-quality combinations. Last, we employ a segmentation 
-          method to compare CLIP distances among the segmented components, ultimately selecting the most promising object from the sampled subset. Our experiments on text pairs of objects from ImageNet showcase that our approach outperforms recent SOTA T2I methods, even the associated 
-          concepts appear to be implausible, such as lionfish-abacus, and monarch-cheetah. -->
-
-          In this paper, we tackle a new task of 3D object synthesis, where a 3D model is combined with another object text to create a novel 3D model. 
-          However, most existing text/image/3D-to-3D methods struggle to effectively integrate multiple content sources, often resulting in inconsistent textures and inaccurate shapes. 
-          To overcome these challenges, we propose a straightforward yet powerful approach, Text+3D-to-3D (T33D), for generating novel and compelling 3D models. 
-          Our method begins by rendering multi-view images and normal maps from the input 3D model, then generating a novel, surprising 2D object using ATIH with the front-view image and the another object text as inputs. 
-          To ensure texture consistency, we introduce texture multi-view diffusion, which refines the textures of the remaining multi-view RGB images based on the novel 2D object. 
-          For enhanced shape accuracy, we propose shape multi-view diffusion to improve the 2D shapes of both the multi-view RGB images and the normal maps, also conditioned on the novel 2D object. 
-          Finally, these outputs are used to reconstruct a complete and novel 3D model. Extensive experiments demonstrate the effectiveness of our method, yielding impressive 3D creations.
-        </p>
-
-    <br>
-    <hr>
-
-
-    <h1>Creative Generation</h1>
+    <p style="width: 80%;">
+        In this paper, we tackle a new task of 3D object synthesis, where a 3D model is combined with another object text to create a novel 3D model. 
+        However, most existing text/image/3D-to-3D methods struggle to effectively integrate multiple content sources, often resulting in inconsistent textures and inaccurate shapes. 
+        To overcome these challenges, we propose a straightforward yet powerful approach, Text+3D-to-3D (T33D), for generating novel and compelling 3D models. 
+        Our method begins by rendering multi-view images and normal maps from the input 3D model, then generating a novel, surprising 2D object using ATIH with the front-view image and the another object text as inputs. 
+        To ensure texture consistency, we introduce texture multi-view diffusion, which refines the textures of the remaining multi-view RGB images based on the novel 2D object. 
+        For enhanced shape accuracy, we propose shape multi-view diffusion to improve the 2D shapes of both the multi-view RGB images and the normal maps, also conditioned on the novel 2D object. 
+        Finally, these outputs are used to reconstruct a complete and novel 3D model. Extensive experiments demonstrate the effectiveness of our method, yielding impressive 3D creations.
+    </p>
+    <h1>Novel Object Synthesis</h1>
+    <!-- <p style="width: 80%; TEXT-ALIGN: center">
+        Semantic mixing refers to the task of mixing two different semantics to create a new concept.
+    </p>
     <p style="width: 80%; TEXT-ALIGN: center">
-        Visual results of combinatorial object generations.
-    </p>
-    
+        <b>(Hover mouse to reveal the generated results).</b>
+    </p> -->
 
-    
+    <!-- <div class="row">
+        <div class="column">
+            <img src="resources/origin_image/monkey.png" alt="corgi" style="width:224px;height:224px">
+        </div>
+        <div class="column">
+            <div class="empty-box">
+                <div class="centered">+ strawberry = </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="flip-box">
+                <div class="flip-box-inner">
+                    <div class="flip-box-front">
+                        <img src="resources/unknown.png" alt="unknown" style="width:224px;height:224px">
+                    </div>
+                    <div class="flip-box-back">
+                        <img src="resources\mix_image\111000000008_fuse_with_strawberry_vary_0.52_astep_2_score_1.495.png" alt="corgi + coffee machine" style="width:224px;height:224px">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <div class="flex-container">
+
     <div class="row">
         <div class="column">
-            <div class="row">
-                <div class="column">
-                    <div class="empty-smallbox10">
-                        <div style="font-size: 14px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >lobster</div>
-                    </div>
-                </div>
-                
-                <div class="column">
-                    <div class="empty-smallbox10">
-                        <div style="font-size: 14px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered " >sea slug</div>
-                    </div>
-                </div>
-            </div>
+            <img src="resources/origin_image/monkey.png" alt="corgi" style="width:224px;height:224px">
         </div>
-       
-        
-        <div class="column">
-            <div class="row">
-                <div class="column">
-                    <div class="empty-smallbox10">
-                        <div style="font-size: 14px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >house finch</div>
-                    </div>
-                </div>
-        
-                <div class="column">
-                    <div class="empty-smallbox10">
-                        <div style="font-size: 14px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >crash helmet</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-        
-
-        <div class="column">
-            <div class="row">
-                <div class="column">
-                    <div class="empty-smallbox10">
-                        <div style="font-size: 14px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >lionfish</div>
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="empty-smallbox10">
-                        <div style="font-size: 14px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >abacus</div>
-                    </div>
-                </div>
-            </div>
+        <div class="column centered-text">
+          <!-- &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&#8201; -->
+          &nbsp;+ strawberry =&nbsp;&#8201;
         </div>
         <div class="column">
-            <div class="row">
-                <div class="column">
-                    <div class="empty-smallbox10">
-                        <div style="font-size: 14px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >fire engine</div>
+            <div class="flip-box">
+                <div class="flip-box-inner">
+                    <div class="flip-box-front">
+                        <img src="resources/unknown.png" alt="unknown" style="width:224px;height:224px">
                     </div>
-                </div>
-                <div class="column">
-                    <div class="empty-smallbox10">
-                        <div style="font-size: 14px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >scotch terrier</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="column">
-            <div class="row">
-                <div class="column">
-                    <div class="empty-smallbox10">
-                        <div style="font-size: 14px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >daisy</div>
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="empty-smallbox10">
-                        <div style="font-size: 14px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >fiddler crab</div>
+                    <div class="flip-box-back">
+                        <img src="resources/mix_image/monkey_fuse_with_strawberry_vary_0.52_astep_2_score_1.495.png" alt="corgi + coffee machine" style="width:224px;height:224px">
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
     <div class="row">
         <div class="column">
-            <div class="row">
-                <div class="column">
-                    <img src="resources/fig_0/1-1.png"  style="width:80px;height:80px">
-                </div>
-                <div class="column">
-                <img src="resources/fig_0/1-2.png"  style="width:80px;height:80px">
-                </div>
-            </div>
+            <img src="resources/origin_image/car_0001.png" alt="corgi" style="width:224px;height:224px">
         </div>
-
-        
-        <div class="column">
-            <div class="row">
-                <div class="column">
-                    <img src="resources/fig_0/2-1.png" style="width:80px;height:80px">
-                </div>
-               
-                <div class="column">
-                <img src="resources/fig_0/2-2.png"  style="width:80px;height:80px">
-                </div>
-            </div>
-        </div>
-       
-        
-
-        <div class="column">
-            <div class="row">
-                <div class="column">
-                    <img src="resources/fig_0/3-1.png" style="width:80px;height:80px">
-                </div>
-            
-                <div class="column">
-                <img src="resources/fig_0/3-2.png" style="width:80px;height:80px">
-                </div>
-            </div>
+        <div class="column centered-text">
+            + hippopotamus =
         </div>
         <div class="column">
-            <div class="row">
-                <div class="column">
-                    <img src="resources/fig_0/4-1.png"style="width:80px;height:80px">
-                </div>
-            
-                <div class="column">
-                <img src="resources/fig_0/4-2.png" style="width:80px;height:80px">
-                </div>
-            </div>
-        </div>
-        <div class="column">
-            <div class="row">
-                <div class="column">
-                    <img src="resources/fig_0/5-1.png" style="width:80px;height:80px">
-                </div>
-            
-                <div class="column">
-                <img src="resources/fig_0/5-2.png" style="width:80px;height:80px">
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-    <div class="row">
-        <div class="column">
-            <div class="flip-box3">
-                <div class="flip-box3-inner">
-                    <div class="flip-box3-front">
-                    <img src="resources/unknown.png" style="width:165px;height:165px">
-                        
+            <div class="flip-box">
+                <div class="flip-box-inner">
+                    <div class="flip-box-front">
+                        <img src="resources/unknown.png" alt="unknown" style="width:224px;height:224px">
                     </div>
-                    <div class="flip-box3-back">
-                        <img src="resources/fig_0/1.png" alt="pagoda" style="width:165px;height:165px">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="column">
-            <div class="flip-box3">
-                <div class="flip-box3-inner">
-                    <div class="flip-box3-front">
-                    <img src="resources/unknown.png"  style="width:165px;height:165px">
-                        
-                    </div>
-                    <div class="flip-box3-back">
-                        <img src="resources/fig_0/2.png" alt="pagoda" style="width:165px;height:165px">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="column">
-            <div class="flip-box3">
-                <div class="flip-box3-inner">
-                    <div class="flip-box3-front">
-                    <img src="resources/unknown.png"style="width:165px;height:165px">
-                       
-                    </div>
-                    <div class="flip-box3-back">
-                        <img src="resources/fig_0/3.png" alt="pagoda" style="width:165px;height:165px">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="column">
-            <div class="flip-box3">
-                <div class="flip-box3-inner">
-                    <div class="flip-box3-front">
-                    <img src="resources/unknown.png"  style="width:165px;height:165px">
-                        
-                    </div>
-                    <div class="flip-box3-back">
-                        <img src="resources/fig_0/4.png" alt="pagoda" style="width:165px;height:165px">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="column">
-            <div class="flip-box3">
-                <div class="flip-box3-inner">
-                    <div class="flip-box3-front">
-                    <img src="resources/unknown.png"  style="width:165px;height:165px">
-                       
-                    </div>
-                    <div class="flip-box3-back">
-                        <img src="resources/fig_0/5.png" alt="pagoda" style="width:165px;height:165px">
-                        
+                    <div class="flip-box-back">
+                        <img src="resources/mix_image/car_0001_fuse_with_hippopotamus_vary_0.992_astep_1_score_1.236.png" alt="corgi + coffee machine" style="width:224px;height:224px">
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <br><br>
-
+<div class="flex-container">
     <div class="row">
-        <div class="column">
-            <div class="row">
-                <div class="column">
-                    <div class="empty-smallbox10">
-                        <div style="font-size: 14px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >grey fox</div>
-                    </div>
-                </div>
-                
-                <div class="column">
-                    <div class="empty-smallbox10">
-                        <div style="font-size: 14px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered " >scotch terrier</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-       
-        
-        <div class="column">
-            <div class="row">
-                <div class="column">
-                    <div class="empty-smallbox10">
-                        <div style="font-size: 14px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >bee eater</div>
-                    </div>
-                </div>
-        
-                <div class="column">
-                    <div class="empty-smallbox10">
-                        <div style="font-size: 14px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >military uniform</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-        
+      <div class="column">
+          <img src="resources/origin_image/corgi.png" alt="corgi" style="width:224px;height:224px">
+      </div>
+      <div class="column centered-text">
+        <!-- &nbsp;&nbsp;&nbsp;&nbsp;&#8201;&#8201; -->
+        &#8201;+ white  shark =&#8201;
 
-        <div class="column">
-            <div class="row">
-                <div class="column">
-                    <div class="empty-smallbox10">
-                        <div style="font-size: 14px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >bobsled</div>
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="empty-smallbox10">
-                        <div style="font-size: 14px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >barn spider</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="column">
-            <div class="row">
-                <div class="column">
-                    <div class="empty-smallbox10">
-                        <div style="font-size: 14px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >fire engine</div>
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="empty-smallbox10">
-                        <div style="font-size: 14px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >scotch terrier</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+      </div>
+      <div class="column">
+          <div class="flip-box">
+              <div class="flip-box-inner">
+                  <div class="flip-box-front">
+                      <img src="resources/unknown.png" alt="unknown" style="width:224px;height:224px">
+                  </div>
+                  <div class="flip-box-back">
+                      <img src="resources/mix_image/corgi_fuse_with_white shark_vary_0.748_astep_3_score_1.387.png" alt="corgi + coffee machine" style="width:224px;height:224px">
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
 
-        <div class="column">
-            <div class="row">
-                <div class="column">
-                    <div class="empty-smallbox10">
-                        <div style="font-size: 14px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >gasmask</div>
-                    </div>
+  <div class="row">
+    <div class="column">
+        <img src="resources/origin_image/9.png" alt="corgi" style="width:224px;height:224px">
+    </div>
+    <div class="column centered-text">
+      <!-- &nbsp; &nbsp;&nbsp;&#8201; -->
+      &nbsp;&nbsp;+ triceratopsk =&nbsp;&#8201;&#8201;
+    </div>
+    <div class="column">
+        <div class="flip-box">
+            <div class="flip-box-inner">
+                <div class="flip-box-front">
+                    <img src="resources/unknown.png" alt="unknown" style="width:224px;height:224px">
                 </div>
-                <div class="column">
-                    <div class="empty-smallbox10">
-                        <div style="font-size: 14px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >bustard apple</div>
-                    </div>
+                <div class="flip-box-back">
+                    <img src="resources/mix_image/9_fuse_with_triceratops_vary_0.681_astep_2_score_1.538.png" alt="corgi + coffee machine" style="width:224px;height:224px">
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="row">
-        <div class="column">
-            <div class="row">
-                <div class="column">
-                    <img src="resources/res1/grey fox&Scotch terrier_grey fox.png"  style="width:80px;height:80px">
-                </div>
-                <div class="column">
-                <img src="resources/res1/grey fox&Scotch terrier_baseline.png"  style="width:80px;height:80px">
-                </div>
-            </div>
-        </div>
-
-        
-        <div class="column">
-            <div class="row">
-                <div class="column">
-                    <img src="resources/change/0.0_prompt_1.png" style="width:80px;height:80px">
-                </div>
-               
-                <div class="column">
-                <img src="resources/change/0.0_prompt_2.png"  style="width:80px;height:80px">
-                </div>
-            </div>
-        </div>
-       
-        
-
-        <div class="column">
-            <div class="row">
-                <div class="column">
-                    <img src="resources/res1/bobsled&barn spider_bobsled.png" style="width:80px;height:80px">
-                </div>
-            
-                <div class="column">
-                <img src="resources/res1/bobsled&barn spider_barn spider.png" style="width:80px;height:80px">
-                </div>
-            </div>
-        </div>
-        <div class="column">
-            <div class="row">
-                <div class="column">
-                    <img src="resources/res1/4-1.png"style="width:80px;height:80px">
-                </div>
-            
-                <div class="column">
-                <img src="resources/res1/4-2.png" style="width:80px;height:80px">
-                </div>
-            </div>
-        </div>
-        <div class="column">
-            <div class="row">
-                <div class="column">
-                    <img src="resources/change/3.0_prompt_1.png" style="width:80px;height:80px">
-                </div>
-            
-                <div class="column">
-                <img src="resources/change/3.0_prompt_2.png" style="width:80px;height:80px">
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-    <div class="row">
-        <div class="column">
-            <div class="flip-box3">
-                <div class="flip-box3-inner">
-                    <div class="flip-box3-front">
-                    <img src="resources/unknown.png" style="width:165px;height:165px">
-                        
-                    </div>
-                    <div class="flip-box3-back">
-                        <img src="resources/res1/grey fox&Scotch terrier_model_0.28_0.25.png" alt="pagoda" style="width:165px;height:165px">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="column">
-            <div class="flip-box3">
-                <div class="flip-box3-inner">
-                    <div class="flip-box3-front">
-                    <img src="resources/unknown.png"  style="width:165px;height:165px">
-                        
-                    </div>
-                    <div class="flip-box3-back">
-                        <img src="resources/change/bee eater&military uniform_T_0.32.png" alt="pagoda" style="width:165px;height:165px">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="column">
-            <div class="flip-box3">
-                <div class="flip-box3-inner">
-                    <div class="flip-box3-front">
-                    <img src="resources/unknown.png"style="width:165px;height:165px">
-                       
-                    </div>
-                    <div class="flip-box3-back">
-                        <img src="resources/res1/bobsled&barn spider_model_0.14_0.21.png" alt="pagoda" style="width:165px;height:165px">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="column">
-            <div class="flip-box3">
-                <div class="flip-box3-inner">
-                    <div class="flip-box3-front">
-                    <img src="resources/unknown.png"  style="width:165px;height:165px">
-                        
-                    </div>
-                    <div class="flip-box3-back">
-                        <img src="resources/res1/4.png" alt="pagoda" style="width:165px;height:165px">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="column">
-            <div class="flip-box3">
-                <div class="flip-box3-inner">
-                    <div class="flip-box3-front">
-                    <img src="resources/unknown.png"  style="width:165px;height:165px">
-                       
-                    </div>
-                    <div class="flip-box3-back">
-                        <img src="resources/change/gasmask&custard apple_T_0.33.png" alt="pagoda" style="width:165px;height:165px">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-
+</div>
+</div>
     <br><br>
     <hr>
-
-    <h1>Our framework</h1>
-    <p style="text-align: justify">
-        The pipeline of our acceptable swap-sampling method. Starting from text embeddings by
-inputting two given texts into the text encoder, we introduce a swapping operation to collect a set F
-of randomly swapping vectors for novel embeddings, then generate a new image set I, and propose
-an acceptable region to build a sampling method for selecting an optimal combinatorial object image.
-    </p>
-
-
-    <img style="width: 100%;" src="./resources/pic_framework.png" alt="Teaser figure."/>
-    <br><br>
-    <hr>
-    
-    <h1>Comparing Results</h1>
-        <!-- <p style="text-align: center">
-            We conduct visual comparisons to assess the generation of combinatorial objects. In this analysis, we evaluate our BASS method against state-of-the-art T2I models, including Stable-Diffusion2<a href="#ref2"><sup>[2]</sup></a> , DALLE2<a href="#ref1"><sup>[1]</sup></a>, ERNIE-ViLG2(Baidu)<a href="#ref3"><sup>[3]</sup></a> , and Bing(Microsoft). 
-        </p>
-            <p style="text-align: center">
-                We compare our BASS results to other T2I models with the general prompt 'Hybrid of [p1] and [p2]'.
-            </p> -->
-        
-
-        <p style="text-align: justify">
-            Visual comparisons of combinatorial object generations. We compare our BASS method with Stable-Diffusion2 <a href="#ref2"><sup>[2]</sup></a>, DALLE2<a href="#ref1"><sup>[1]</sup></a>,
-            ERNIE-ViLG2 (Baidu)<a href="#ref3"><sup>[3]</sup></a>  and Bing (Microsoft) using the prompt ’Hybrid of [prompt1] and [prompt2]’. The results reveal that our model
-            outperforms these counterparts in terms of its creative combinatorial. Moreover, our results exhibit significant dissimilarity from the images
-            retrieved from the LAION-5B dataset<a href="#ref6"><sup>[6]</sup></a>in the first row. This directly illustrates our model’s ability to generate out-of-distribution images.
-            For more fair comparison, in addition, we also use intricate textual descriptions in conjunction with our generated images as input prompts.
-            However, these models have not yet demonstrated the capability to produce results that closely match our own.        </p>
-
-
-        
-        <img style="width: 80%;" src="./resources/Comparing Results.png" alt="Teaser figure."/>
-
-
-        
-    <br> <br>
-    <hr>
-    
-      <h1>Sampling Comparision</h1>
-          <p style="text-align: center">
-            Comparing our BASS with state-of-the-art human-evaluation methods, such as PickScore<a href="#ref4"><sup>[4]</sup></a> and HPSv2<a href="#ref5"><sup>[5]</sup></a>, through visualizations of the sampling results.
-          </p>
-
-
-    <img style="width: 80%;" src="./resources/pic_HPT.png" alt="Teaser figure."/>
-
-
-
-
-    <br> <br>
-    <hr>
-    <h1>More Results</h1>
-      <h2>Different Styles Generation</h2>
-
-
+    <h1>Application</h1>
     <p style="TEXT-ALIGN: center">
-        Generalizations using four different styles including aquarelle, line-art, cartoon, and ink painting.
-    </p>
-      <img style="width: 80%;" src="./resources/pic_style.png" alt="Teaser figure."/>
-
-    <br><br>
-    <hr>
-      <h2>Fix one with another</h2>
-
-
-    <p style="TEXT-ALIGN: center">
-        We fixed two words:bea eater and green lizard, to generalize different results.
-    </p>
+      <b>Video character creation to stimulate imagination.</b>
       
+    </p>
+    <p style="TEXT-ALIGN: center">
+      Created with <a href="https://lumalabs.ai/dream-machine/creations" target="_blank">luma Dream Machine</a> based on the images generated by our method.
+    </p>
+    <!-- <p style="TEXT-ALIGN: center">
+        <b>(Hover mouse to check out the concept removed outputs)</b>
+    </p> -->
+
     <div class="row">
         <div class="column">
-                    <img src="resources/fix/bee eater.png" alt="pagoda + lamp" style="width:180px;height:180px">
-                </div>
-       
-        <div class="column">
-            <div class="empty-smallbox9">
-                <div class="centered" >+</div>
-            </div>
-        </div>
-        
-        <div class="column">
-            <div class="flip-box2">
-                <div class="flip-box2-inner">
-                    <div class="flip-box2-front">
-                    <img src="resources/fix/electric guitar.png" alt="pagoda + lamp" style="width:180px;height:180px">
-                        
-                    </div>
-                    <div class="flip-box2-back">
-                        <img src="resources/fix/bee eater&electric guitar_model_0.13_0.25.png" alt="pagoda" style="width:180px;height:180px">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="column">
-            <div class="flip-box2">
-                <div class="flip-box2-inner">
+            <div class="flip-box">
+                <div class="flip-box-inner">
                     <div class="flip-box-front">
-                    <img src="resources/fix/Irish wolfhound.png" alt="pagoda + lamp" style="width:180px;height:180px">
-                       
+                    <img src="resources/gif/monkey.gif" alt="dumpling" style="width:224px;height:224px">
+                        <!-- <div class="text-block">
+                            <h4>remove dumpling</h4>
+                        </div> -->
                     </div>
-                    <div class="flip-box2-back">
-                        <img src="resources/fix/bee eater&Irish wolfhound_model_0.26_0.26.png" alt="pagoda" style="width:180px;height:180px">
-                        
+                    <div class="flip-box-back">
+                        <img src="resources/video_origin/2.png" alt="remove dumpling" style="width:224px;height:224px">
                     </div>
                 </div>
             </div>
         </div>
         <div class="column">
-            <div class="flip-box2">
-                <div class="flip-box2-inner">
-                    <div class="flip-box2-front">
-                    <img src="resources/fix/redbone.png" alt="pagoda + lamp" style="width:180px;height:180px">
-                        
+            <div class="flip-box">
+                <div class="flip-box-inner">
+                    <div class="flip-box-front">
+                    <img src="resources/gif/horse.gif" alt="shell" style="width:224px;height:224px">
+                        <!-- <div class="text-block">
+                            <h4>remove shell</h4>
+                        </div> -->
                     </div>
-                    <div class="flip-box2-back">
-                        <img src="resources/fix/bee eater&redbone_model_0.28_0.17.png" alt="pagoda" style="width:180px;height:180px">
-                        
+                    <div class="flip-box-back">
+                        <img src="resources/video_origin/3.png" alt="remove shell" style="width:224px;height:224px">
                     </div>
                 </div>
             </div>
         </div>
-        
         <div class="column">
-            <div class="flip-box2">
-                <div class="flip-box2-inner">
-                    <div class="flip-box2-front">
-                    <img src="resources/fix/tree frog.png" alt="pagoda + lamp" style="width:180px;height:180px">
-                       
+            <div class="flip-box">
+                <div class="flip-box-inner">
+                    <div class="flip-box-front">
+                    <img src="resources/gif/human.gif" alt="corgi" style="width:224px;height:224px">
+                        <!-- <div class="text-block">
+                            <h4>remove dog</h4>
+                        </div> -->
                     </div>
-                    <div class="flip-box2-back">
-                        <img src="resources/fix/bee eater&tree frog_model_0.23_0.27.png" alt="pagoda" style="width:180px;height:180px">
-                        
+                    <div class="flip-box-back">
+                        <img src="resources/video_origin/1.png" alt="remove corgi" style="width:224px;height:224px">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="flip-box">
+                <div class="flip-box-inner">
+                    <div class="flip-box-front">
+                    <img src="resources/gif/wolf.gif" alt="hamburger" style="width:224px;height:224px">
+                        <!-- <div class="text-block">
+                            <h4>remove hamburger</h4>
+                        </div> -->
+                    </div>
+                    <div class="flip-box-back">
+                        <img src="resources/video_origin/5.png" alt="remove hamburger" style="width:224px;height:224px">
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    
     <div class="row">
         <div class="column">
-            <div style="white-space: nowrap;"class="empty-smallbox8">
-                <div style="font-size: 16px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >bee eater</div>
-            </div>
-        </div>
-
-        <div class="column">
-            <div class="empty-smallbox6">
-                <div class="centered" ></div>
-            </div>
-        </div>
-
-
-
-    
-    
-        <div class="column">
-            <div style="white-space: nowrap;"class="empty-smallbox8">
-                <div style="font-size: 16px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >electric guitar</div>
-            </div>
-        </div>
-    
-        <div class="column">
-            <div style="white-space: nowrap;"class="empty-smallbox8">
-                <div style="font-size: 16px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >Irish wolfhound</div>
-            </div>
-        </div>
-    
-        <div class="column">
-            <div class="empty-smallbox8">
-                <div style="font-size: 16px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >redbone</div>
-            </div>
-        </div>
-        <div class="column">
-            <div style="white-space: nowrap;"class="empty-smallbox8">
-                <div style="font-size: 16px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >tree frog</div>
-            </div>
-        </div>
-     </div>
-
-     
-    <div class="row">
-        <div class="column">
-                    <img src="resources/fix/green lizard.png" alt="pagoda + lamp" style="width:180px;height:180px">
-                </div>
-       
-
-        <div class="column">
-            <div class="empty-smallbox9">
-                <div class="centered" >+</div>
-            </div>
-        </div>
-        
-        <div class="column">
-            <div class="flip-box2">
-                <div class="flip-box2-inner">
-                    <div class="flip-box2-front">
-                    <img src="resources/fix/Border terrier.png" alt="pagoda + lamp" style="width:180px;height:180px">
-                        
-                    </div>
-                    <div class="flip-box2-back">
-                        <img src="resources/fix/green lizard&Border terrier_model_0.27_0.18.png" alt="pagoda" style="width:180px;height:180px">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="column">
-            <div class="flip-box2">
-                <div class="flip-box2-inner">
+            <div class="flip-box">
+                <div class="flip-box-inner">
                     <div class="flip-box-front">
-                    <img src="resources/fix/head cabbage.png" alt="pagoda + lamp" style="width:180px;height:180px">
-                       
+                    <img src="resources/gif/rabbit.gif" alt="watermelon" style="width:224px;height:224px">
+                        <!-- <div class="text-block">
+                            <h4>remove watermleon</h4>
+                        </div> -->
                     </div>
-                    <div class="flip-box2-back">
-                        <img src="resources/fix/green lizard&head cabbage_model_0.27_0.26.png" alt="pagoda" style="width:180px;height:180px">
-                        
+                    <div class="flip-box-back">
+                        <img src="resources/video_origin/4.png" alt="remove watermelon" style="width:224px;height:224px">
                     </div>
                 </div>
             </div>
         </div>
         <div class="column">
-            <div class="flip-box2">
-                <div class="flip-box2-inner">
-                    <div class="flip-box2-front">
-                    <img src="resources/fix/killer whale.png" alt="pagoda + lamp" style="width:180px;height:180px">
-                        
+            <div class="flip-box">
+                <div class="flip-box-inner">
+                    <div class="flip-box-front">
+                    <img src="resources/gif/naruto.gif" alt="cat" style="width:224px;height:224px">
+                        <!-- <div class="text-block">
+                            <h4>remove cat</h4>
+                        </div> -->
                     </div>
-                    <div class="flip-box2-back">
-                        <img src="resources/fix/green lizard&killer whale_model_0.27_0.19.png" alt="pagoda" style="width:180px;height:180px">
-                        
+                    <div class="flip-box-back">
+                        <img src="resources/video_origin/6.png" alt="remove cat" style="width:224px;height:224px">
                     </div>
                 </div>
             </div>
         </div>
-        
         <div class="column">
-            <div class="flip-box2">
-                <div class="flip-box2-inner">
-                    <div class="flip-box2-front">
-                    <img src="resources/fix/silky terrier.png" alt="pagoda + lamp" style="width:180px;height:180px">
-                       
+            <div class="flip-box">
+                <div class="flip-box-inner">
+                    <div class="flip-box-front">
+                    <img src="resources/gif/giraffe.gif" alt="pumpkin" style="width:224px;height:224px">
+                        <!-- <div class="text-block">
+                            <h4>remove pumpkin</h4>
+                        </div> -->
                     </div>
-                    <div class="flip-box2-back">
-                        <img src="resources/fix/green lizard&silky terrier_model_0.23_0.28.png" alt="pagoda" style="width:180px;height:180px">
-                        
+                    <div class="flip-box-back">
+                        <img src="resources/video_origin/8.png" alt="remove pumpkin" style="width:224px;height:224px">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="flip-box">
+                <div class="flip-box-inner">
+                    <div class="flip-box-front">
+                    <img src="resources/gif/bear_toy.gif" alt="fruit_basket" style="width:224px;height:224px">
+                        <!-- <div class="text-block">
+                            <h4>remove basket</h4>
+                        </div> -->
+                    </div>
+                    <div class="flip-box-back">
+                        <img src="resources/video_origin/7.png" alt="remove fruit basket" style="width:224px;height:224px">
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    
-    <div class="row">
-        <div class="column">
-            <div style="white-space: nowrap;"class="empty-smallbox8">
-                <div style="font-size: 16px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >green lizard</div>
-            </div>
-        </div>
-
-        <div class="column">
-            <div class="empty-smallbox6">
-                <div class="centered" ></div>
-            </div>
-        </div>
-
-
-
-    
-    
-        <div class="column">
-            <div style="white-space: nowrap;"class="empty-smallbox8">
-                <div style="font-size: 16px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;" class="centered" >border terrier</div>
-            </div>
-        </div>
-    
-        <div class="column">
-            <div style="white-space: nowrap;"class="empty-smallbox8">
-                <div style="font-size: 16px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >head cabbage</div>
-            </div>
-        </div>
-    
-        <div class="column">
-            <div style="white-space: nowrap;"class="empty-smallbox8">
-                <div style="font-size: 16px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >killer whale</div>
-            </div>
-        </div>
-        <div class="column">
-            <div style="white-space: nowrap;"class="empty-smallbox8">
-                <div style="font-size: 16px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >silky terrier</div>
-            </div>
-        </div>
-     </div>
 
     <br><br>
     <hr>
 
     
-    <h2>More visual results</h2>
+    <h1>Results</h1>
+    <div class="row">
+      <div class="column">
+          <div class="flip-box">
+              <div class="flip-box-inner">
+                  <div class="flip-box-front">
+                  <img src="resources/gif/horse_text.gif" alt="dumpling" style="width:224px;height:224px">
+                      <!-- <div class="text-block">
+                          <h4>remove dumpling</h4>
+                      </div> -->
+                  </div>
+                  <div class="flip-box-back">
+                      <img src="resources/origin_image/horse_0006.png" alt="remove dumpling" style="width:224px;height:224px">
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="column">
+          <div class="flip-box">
+              <div class="flip-box-inner">
+                  <div class="flip-box-front">
+                  <img src="resources/gif/lion_text.gif" alt="shell" style="width:224px;height:224px">
+                      <!-- <div class="text-block">
+                          <h4>remove shell</h4>
+                      </div> -->
+                  </div>
+                  <div class="flip-box-back">
+                      <img src="resources/origin_image/lion.png" alt="remove shell" style="width:224px;height:224px">
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="column">
+          <div class="flip-box">
+              <div class="flip-box-inner">
+                  <div class="flip-box-front">
+                  <img src="resources/gif/mouse_text.gif" alt="corgi" style="width:224px;height:224px">
+                      <!-- <div class="text-block">
+                          <h4>remove dog</h4>
+                      </div> -->
+                  </div>
+                  <div class="flip-box-back">
+                      <img src="resources/origin_image/211000000007.jpg" alt="remove corgi" style="width:224px;height:224px">
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="column">
+          <div class="flip-box">
+              <div class="flip-box-inner">
+                  <div class="flip-box-front">
+                  <img src="resources/gif/wolf_text.gif" alt="hamburger" style="width:224px;height:224px">
+                      <!-- <div class="text-block">
+                          <h4>remove hamburger</h4>
+                      </div> -->
+                  </div>
+                  <div class="flip-box-back">
+                      <img src="resources/origin_image/wolf.png" alt="remove hamburger" style="width:224px;height:224px">
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <div class="row">
+      <div class="column">
+          <div class="flip-box">
+              <div class="flip-box-inner">
+                  <div class="flip-box-front">
+                  <img src="resources/gif/rabbit_text.gif" alt="watermelon" style="width:224px;height:224px">
+                      <!-- <div class="text-block">
+                          <h4>remove watermleon</h4>
+                      </div> -->
+                  </div>
+                  <div class="flip-box-back">
+                      <img src="resources/origin_image/811000000002.jpg" alt="remove watermelon" style="width:224px;height:224px">
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="column">
+          <div class="flip-box">
+              <div class="flip-box-inner">
+                  <div class="flip-box-front">
+                  <img src="resources/gif/deer_text.gif" alt="cat" style="width:224px;height:224px">
+                      <!-- <div class="text-block">
+                          <h4>remove cat</h4>
+                      </div> -->
+                  </div>
+                  <div class="flip-box-back">
+                      <img src="resources/origin_image/811000000001.jpg" alt="remove cat" style="width:224px;height:224px">
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="column">
+          <div class="flip-box">
+              <div class="flip-box-inner">
+                  <div class="flip-box-front">
+                  <img src="resources/gif/owl_text.gif" alt="pumpkin" style="width:224px;height:224px">
+                      <!-- <div class="text-block">
+                          <h4>remove pumpkin</h4>
+                      </div> -->
+                  </div>
+                  <div class="flip-box-back">
+                      <img src="resources/origin_image/owl.png" alt="remove pumpkin" style="width:224px;height:224px">
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="column">
+          <div class="flip-box">
+              <div class="flip-box-inner">
+                  <div class="flip-box-front">
+                  <img src="resources/gif/duck_text.gif" alt="fruit_basket" style="width:224px;height:224px">
+                      <!-- <div class="text-block">
+                          <h4>remove basket</h4>
+                      </div> -->
+                  </div>
+                  <div class="flip-box-back">
+                      <img src="resources/origin_image/duck.png" alt="remove fruit basket" style="width:224px;height:224px">
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <br><br>
+    <hr>
+  <h1>Framework</h1>
+    <img style="width: 80%;" src="resources/paper_image/framework2.png"
+        alt="Breed mixing results"/>
+    <br><br>
+    <hr>
+    <h1>ATIH</h1>
+
+    <p style="TEXT-ALIGN: center">
+      <b> With adjust injection step i to balance fidelity and editability.(Demonstrate the fusion process)</b>
+    </p>
 
     <div class="row">
-        <div class="column">
-            <div class="flip-box3">
-                <div class="flip-box3-inner">
-                    <div class="flip-box3-front">
-                    <img src="resources/unknown.png" style="width:165px;height:165px">
-                        
-                    </div>
-                    <div class="flip-box3-back">
-                        <img src="resources/more_res/1.png" alt="pagoda" style="width:165px;height:165px">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="column">
-            <div class="flip-box3">
-                <div class="flip-box3-inner">
-                    <div class="flip-box3-front">
-                    <img src="resources/unknown.png"  style="width:165px;height:165px">
-                        
-                    </div>
-                    <div class="flip-box3-back">
-                        <img src="resources/more_res/2.png" alt="pagoda" style="width:165px;height:165px">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="column">
-            <div class="flip-box3">
-                <div class="flip-box3-inner">
-                    <div class="flip-box3-front">
-                    <img src="resources/unknown.png"style="width:165px;height:165px">
-                       
-                    </div>
-                    <div class="flip-box3-back">
-                        <img src="resources/more_res/3.png" alt="pagoda" style="width:165px;height:165px">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="column">
-            <div class="flip-box3">
-                <div class="flip-box3-inner">
-                    <div class="flip-box3-front">
-                    <img src="resources/unknown.png"  style="width:165px;height:165px">
-                        
-                    </div>
-                    <div class="flip-box3-back">
-                        <img src="resources/more_res/4.png" alt="pagoda" style="width:165px;height:165px">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="column">
-            <div class="flip-box3">
-                <div class="flip-box3-inner">
-                    <div class="flip-box3-front">
-                    <img src="resources/unknown.png"  style="width:165px;height:165px">
-                       
-                    </div>
-                    <div class="flip-box3-back">
-                        <img src="resources/more_res/5.png" alt="pagoda" style="width:165px;height:165px">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+      <div class="column">
+          <div class="flip-box">
+              <div class="flip-box-inner">
+                  <div class="flip-box-front">
+                    <p style="TEXT-ALIGN: center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;airship</p>
+                  <img src="resources/gif/car_0001.gif" alt="watermelon" style="width:224px;height:224px">
+                      <!-- <div class="text-block">
+                          <h4>remove watermleon</h4>
+                      </div> -->
+                  </div>
+                  <div class="flip-box-back">
+                    <p style="TEXT-ALIGN: center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;airship</p>
+                      <img src="resources/origin_image/car_0001.png" alt="remove watermelon" style="width:224px;height:224px">
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="column">
+          <div class="flip-box">
+              <div class="flip-box-inner">
+                  <div class="flip-box-front">
+                    <p style="TEXT-ALIGN: center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cock</p>
+                  <img src="resources/gif/rabbit2.gif" alt="cat" style="width:224px;height:224px">
+                      <!-- <div class="text-block">
+                          <h4>remove cat</h4>
+                      </div> -->
+                  </div>
+                  <div class="flip-box-back">
+                    <p style="TEXT-ALIGN: center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cock</p>
+                      <img src="resources/origin_image/rabbit.png" alt="remove cat" style="width:224px;height:224px">
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="column">
+          <div class="flip-box">
+              <div class="flip-box-inner">
+                  <div class="flip-box-front">
+                    <p style="TEXT-ALIGN: center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;badger</p>
+                  <img src="resources/gif/squirrel.gif" alt="pumpkin" style="width:224px;height:224px">
+                      <!-- <div class="text-block">
+                          <h4>remove pumpkin</h4>
+                      </div> -->
+                  </div>
+                  <div class="flip-box-back">
+                    <p style="TEXT-ALIGN: center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;badger</p>
+                      <img src="resources/origin_image/squirrel.png" alt="remove pumpkin" style="width:224px;height:224px">
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="column">
+          <div class="flip-box">
+              <div class="flip-box-inner">
+                  <div class="flip-box-front">
+                    <p style="TEXT-ALIGN: center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bald eagle</p>
+                  <img src="resources/gif/horse_0005.gif" alt="fruit_basket" style="width:224px;height:224px">
+                      <!-- <div class="text-block">
+                          <h4>remove basket</h4>
+                      </div> -->
+                  </div>
+                  <div class="flip-box-back">
+                    <p style="TEXT-ALIGN: center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bald eagle</p>
+                      <img src="resources/origin_image/horse_0005.png" alt="remove fruit basket" style="width:224px;height:224px">
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
 
-   
-
-
-
-
-
+  <br><br>
+  <p style="TEXT-ALIGN: center">
+    <b>Adaptively adjust the scale factor α for harmonizing text and image in 10 seconds.</b></p>
     <div class="row">
-        <div class="column">
-            <div class="row">
-                <div class="column">
-                    <img src="resources/more_res/1-1.png"  style="width:80px;height:80px">
-                </div>
-                <div class="column">
-                <img src="resources/more_res/1-2.png"  style="width:80px;height:80px">
-                </div>
-            </div>
-        </div>
-
-        
-        <div class="column">
-            <div class="row">
-                <div class="column">
-                    <img src="resources/more_res/2-1.png" style="width:80px;height:80px">
-                </div>
-               
-                <div class="column">
-                <img src="resources/more_res/2-2.png"  style="width:80px;height:80px">
-                </div>
-            </div>
-        </div>
-       
-        
-
-        <div class="column">
-            <div class="row">
-                <div class="column">
-                    <img src="resources/more_res/3-1.png" style="width:80px;height:80px">
-                </div>
-            
-                <div class="column">
-                <img src="resources/more_res/3-2.png" style="width:80px;height:80px">
-                </div>
-            </div>
-        </div>
-        <div class="column">
-            <div class="row">
-                <div class="column">
-                    <img src="resources/more_res/4-1.png"style="width:80px;height:80px">
-                </div>
-            
-                <div class="column">
-                <img src="resources/more_res/4-2.png" style="width:80px;height:80px">
-                </div>
-            </div>
-        </div>
-        <div class="column">
-            <div class="row">
-                <div class="column">
-                    <img src="resources/more_res/5-1.png" style="width:80px;height:80px">
-                </div>
-            
-                <div class="column">
-                <img src="resources/more_res/5-2.png" style="width:80px;height:80px">
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="column">
-            <div class="row">
-                <div class="column">
-                    <div class="empty-smallbox10">
-                        <div style="font-size: 14px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >basenji</div>
-                    </div>
-                </div>
-                
-                <div class="column">
-                    <div class="empty-smallbox10">
-                        <div style="font-size: 14px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered " >frilled lizard</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-       
-        
-        <div class="column">
-            <div class="row">
-                <div class="column">
-                    <div class="empty-smallbox10">
-                        <div style="font-size: 14px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >airliner</div>
-                    </div>
-                </div>
-        
-                <div class="column">
-                    <div class="empty-smallbox10">
-                        <div style="font-size: 14px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >hot pot</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-        
-
-        <div class="column">
-            <div class="row">
-                <div class="column">
-                    <div class="empty-smallbox10">
-                        <div style="font-size: 14px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >African grey</div>
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="empty-smallbox10">
-                        <div style="font-size: 14px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >warplane</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="column">
-            <div class="row">
-                <div class="column">
-                    <div class="empty-smallbox10">
-                        <div style="font-size: 14px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >Afghan hound</div>
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="empty-smallbox10">
-                        <div style="font-size: 14px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >great owl</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="column">
-            <div class="row">
-                <div class="column">
-                    <div class="empty-smallbox10">
-                        <div style="font-size: 14px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >jacamar</div>
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="empty-smallbox10">
-                        <div style="font-size: 14px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >hippop otamus</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="column">
-            <div class="flip-box3">
-                <div class="flip-box3-inner">
-                    <div class="flip-box3-front">
-                    <img src="resources/unknown.png" style="width:165px;height:165px">
-                        
-                    </div>
-                    <div class="flip-box3-back">
-                        <img src="resources/change/Gordon setter&power drill_T_0.23.png" alt="pagoda" style="width:165px;height:165px">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="column">
-            <div class="flip-box3">
-                <div class="flip-box3-inner">
-                    <div class="flip-box3-front">
-                    <img src="resources/unknown.png"  style="width:165px;height:165px">
-                        
-                    </div>
-                    <div class="flip-box3-back">
-                        <img src="resources/change/jacamar&Indian elephant_T_0.22.png" alt="pagoda" style="width:165px;height:165px">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="column">
-            <div class="flip-box3">
-                <div class="flip-box3-inner">
-                    <div class="flip-box3-front">
-                    <img src="resources/unknown.png"style="width:165px;height:165px">
-                       
-                    </div>
-                    <div class="flip-box3-back">
-                        <img src="resources/more_res/8.png" alt="pagoda" style="width:165px;height:165px">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="column">
-            <div class="flip-box3">
-                <div class="flip-box3-inner">
-                    <div class="flip-box3-front">
-                    <img src="resources/unknown.png"  style="width:165px;height:165px">
-                        
-                    </div>
-                    <div class="flip-box3-back">
-                        <img src="resources/more_res/9.png" alt="pagoda" style="width:165px;height:165px">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="column">
-            <div class="flip-box3">
-                <div class="flip-box3-inner">
-                    <div class="flip-box3-front">
-                    <img src="resources/unknown.png"  style="width:165px;height:165px">
-                       
-                    </div>
-                    <div class="flip-box3-back">
-                        <img src="resources/more_res/10.png" alt="pagoda" style="width:165px;height:165px">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-   
-
-
-
-
-
-    <div class="row">
-        <div class="column">
-            <div class="row">
-                <div class="column">
-                    <img src="resources/change/4.0_prompt_1.png"  style="width:80px;height:80px">
-                </div>
-                <div class="column">
-                <img src="resources/change/4.0_prompt_2.png"  style="width:80px;height:80px">
-                </div>
-            </div>
-        </div>
-
-        
-        <div class="column">
-            <div class="row">
-                <div class="column">
-                    <img src="resources/change/5.0_prompt_1.png" style="width:80px;height:80px">
-                </div>
-               
-                <div class="column">
-                <img src="resources/change/5.0_prompt_2.png"  style="width:80px;height:80px">
-                </div>
-            </div>
-        </div>
-       
-        
-
-        <div class="column">
-            <div class="row">
-                <div class="column">
-                    <img src="resources/more_res/8-1.png" style="width:80px;height:80px">
-                </div>
-            
-                <div class="column">
-                <img src="resources/more_res/8-2.png" style="width:80px;height:80px">
-                </div>
-            </div>
-        </div>
-        <div class="column">
-            <div class="row">
-                <div class="column">
-                    <img src="resources/more_res/9-1.png"style="width:80px;height:80px">
-                </div>
-            
-                <div class="column">
-                <img src="resources/more_res/9-2.png" style="width:80px;height:80px">
-                </div>
-            </div>
-        </div>
-        <div class="column">
-            <div class="row">
-                <div class="column">
-                    <img src="resources/more_res/10-1.png" style="width:80px;height:80px">
-                </div>
-            
-                <div class="column">
-                <img src="resources/more_res/10-2.png" style="width:80px;height:80px">
-                </div>
-            </div>
-        </div>
-    </div>
-
-   
-
-
-    <div class="row">
-        <div class="column">
-            <div class="row">
-                <div class="column">
-                    <div class="empty-smallbox10">
-                        <div style="font-size: 14px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >Gordon setter</div>
-                    </div>
-                </div>
-                
-                <div class="column">
-                    <div class="empty-smallbox10">
-                        <div style="font-size: 14px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered " >power drill</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-       
-        
-        <div class="column">
-            <div class="row">
-                <div class="column">
-                    <div class="empty-smallbox10">
-                        <div style="font-size: 14px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >jacamar</div>
-                    </div>
-                </div>
-        
-                <div class="column">
-                    <div class="empty-smallbox10">
-                        <div style="font-size: 14px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >Indian elephant</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-        
-
-        <div class="column">
-            <div class="row">
-                <div class="column">
-                    <div class="empty-smallbox10">
-                        <div style="font-size: 14px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >tricycle</div>
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="empty-smallbox10">
-                        <div style="font-size: 14px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >head cabbage</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="column">
-            <div class="row">
-                <div class="column">
-                    <div class="empty-smallbox10">
-                        <div style="font-size: 14px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >lemon</div>
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="empty-smallbox10">
-                        <div style="font-size: 14px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >scorpion</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="column">
-            <div class="row">
-                <div class="column">
-                    <div class="empty-smallbox10">
-                        <div style="font-size: 14px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >junco</div>
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="empty-smallbox10">
-                        <div style="font-size: 14px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >go-kart</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="column">
-            <div class="flip-box3">
-                <div class="flip-box3-inner">
-                    <div class="flip-box3-front">
-                    <img src="resources/unknown.png" style="width:165px;height:165px">
-                        
-                    </div>
-                    <div class="flip-box3-back">
-                        <img src="resources/more_res/11.png" alt="pagoda" style="width:165px;height:165px">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="column">
-            <div class="flip-box3">
-                <div class="flip-box3-inner">
-                    <div class="flip-box3-front">
-                    <img src="resources/unknown.png"  style="width:165px;height:165px">
-                        
-                    </div>
-                    <div class="flip-box3-back">
-                        <img src="resources/more_res/12.png" alt="pagoda" style="width:165px;height:165px">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="column">
-            <div class="flip-box3">
-                <div class="flip-box3-inner">
-                    <div class="flip-box3-front">
-                    <img src="resources/unknown.png"style="width:165px;height:165px">
-                       
-                    </div>
-                    <div class="flip-box3-back">
-                        <img src="resources/more_res/13.png" alt="pagoda" style="width:165px;height:165px">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="column">
-            <div class="flip-box3">
-                <div class="flip-box3-inner">
-                    <div class="flip-box3-front">
-                    <img src="resources/unknown.png"  style="width:165px;height:165px">
-                        
-                    </div>
-                    <div class="flip-box3-back">
-                        <img src="resources/more_res/14.png" alt="pagoda" style="width:165px;height:165px">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="column">
-            <div class="flip-box3">
-                <div class="flip-box3-inner">
-                    <div class="flip-box3-front">
-                    <img src="resources/unknown.png"  style="width:165px;height:165px">
-                       
-                    </div>
-                    <div class="flip-box3-back">
-                        <img src="resources/change/toucan&bathing cap.png" alt="pagoda" style="width:165px;height:165px">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-   
-
-
-
-
-
-    <div class="row">
-        <div class="column">
-            <div class="row">
-                <div class="column">
-                    <img src="resources/more_res/11-1.png"  style="width:80px;height:80px">
-                </div>
-                <div class="column">
-                <img src="resources/more_res/11-2.png"  style="width:80px;height:80px">
-                </div>
-            </div>
-        </div>
-
-        
-        <div class="column">
-            <div class="row">
-                <div class="column">
-                    <img src="resources/more_res/12-1.png" style="width:80px;height:80px">
-                </div>
-               
-                <div class="column">
-                <img src="resources/more_res/12-2.png"  style="width:80px;height:80px">
-                </div>
-            </div>
-        </div>
-       
-        
-
-        <div class="column">
-            <div class="row">
-                <div class="column">
-                    <img src="resources/more_res/13-1.png" style="width:80px;height:80px">
-                </div>
-            
-                <div class="column">
-                <img src="resources/more_res/13-2.png" style="width:80px;height:80px">
-                </div>
-            </div>
-        </div>
-        <div class="column">
-            <div class="row">
-                <div class="column">
-                    <img src="resources/more_res/14-1.png"style="width:80px;height:80px">
-                </div>
-            
-                <div class="column">
-                <img src="resources/more_res/14-2.png" style="width:80px;height:80px">
-                </div>
-            </div>
-        </div>
-        <div class="column">
-            <div class="row">
-                <div class="column">
-                    <img src="resources/change/7.0_prompt_1.png" style="width:80px;height:80px">
-                </div>
-            
-                <div class="column">
-                <img src="resources/change/7.0_prompt_2.png" style="width:80px;height:80px">
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="column">
-            <div class="row">
-                <div class="column">
-                    <div class="empty-smallbox10">
-                        <div style="font-size: 14px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >conch</div>
-                    </div>
-                </div>
-                
-                <div class="column">
-                    <div class="empty-smallbox10">
-                        <div style="font-size: 14px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered " >pirate</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-       
-        
-        <div class="column">
-            <div class="row">
-                <div class="column">
-                    <div class="empty-smallbox10">
-                        <div style="font-size: 14px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >bee</div>
-                    </div>
-                </div>
-        
-                <div class="column">
-                    <div class="empty-smallbox10">
-                        <div style="font-size: 14px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >tiger</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-        
-
-        <div class="column">
-            <div class="row">
-                <div class="column">
-                    <div class="empty-smallbox10">
-                        <div style="font-size: 14px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >barn spider</div>
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="empty-smallbox10">
-                        <div style="font-size: 14px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >acoustic guitar</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="column">
-            <div class="row">
-                <div class="column">
-                    <div class="empty-smallbox10">
-                        <div style="font-size: 14px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >albatross</div>
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="empty-smallbox10">
-                        <div style="font-size: 14px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >joystick</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="column">
-            <div class="row">
-                <div class="column">
-                    <div class="empty-smallbox10">
-                        <div style="font-size: 14px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >toucan</div>
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="empty-smallbox10">
-                        <div style="font-size: 14px;font-family: 'Times New Roman', Times, serif;white-space: nowrap;"class="centered" >bathing cap</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
+      <div class="column">
+          <div class="flip-box">
+              <div class="flip-box-inner">
+                  <div class="flip-box-front">
+                  <img src="resources/gif/ATIH_car_0001.gif" alt="watermelon" style="width:224px;height:224px">
+                      <!-- <div class="text-block">
+                          <h4>remove watermleon</h4>
+                      </div> -->
+                  </div>
+                  <div class="flip-box-back">
+                      <img src="resources/mix_image/car_0001_fuse_with_airship_vary_1.281_astep_2_score_1.23.png" alt="remove watermelon" style="width:224px;height:224px">
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="column">
+          <div class="flip-box">
+              <div class="flip-box-inner">
+                  <div class="flip-box-front">
+                  <img src="resources/gif/ATIHrabbit.gif" alt="cat" style="width:224px;height:224px">
+                      <!-- <div class="text-block">
+                          <h4>remove cat</h4>
+                      </div> -->
+                  </div>
+                  <div class="flip-box-back">
+                      <img src="resources/mix_image/10rabbit_fuse_with_cock_vary_0.394_astep_2_score_1.512.png" alt="remove cat" style="width:224px;height:224px">
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="column">
+          <div class="flip-box">
+              <div class="flip-box-inner">
+                  <div class="flip-box-front">
+                  <img src="resources/gif/ATIHsquirrel.gif" alt="pumpkin" style="width:224px;height:224px">
+                      <!-- <div class="text-block">
+                          <h4>remove pumpkin</h4>
+                      </div> -->
+                  </div>
+                  <div class="flip-box-back">
+                      <img src="resources/mix_image/11squirrel_fuse_with_badger_vary_0.443_astep_2_score_1.647.png" alt="remove pumpkin" style="width:224px;height:224px">
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="column">
+          <div class="flip-box">
+              <div class="flip-box-inner">
+                  <div class="flip-box-front">
+                  <img src="resources/gif/ATIHhorse_0005.gif" alt="fruit_basket" style="width:224px;height:224px">
+                      <!-- <div class="text-block">
+                          <h4>remove basket</h4>
+                      </div> -->
+                  </div>
+                  <div class="flip-box-back">
+                      <img src="resources/mix_image/11horse_0005_fuse_with_bald eagle_vary_0.32_astep_3_score_1.413.png" alt="remove fruit basket" style="width:224px;height:224px">
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
 
 
     <br><br>
     <hr>
-
-
-
-
-    <h2>References</h2>
-    <blockquote>
-        <p id="ref1">[1]Aditya Ramesh, Prafulla Dhariwal, Alex Nichol, Casey Chu, and Mark Chen. Hierarchical text-
-            conditional image generation with clip latents. In arXiv:2204.06125, 2022.</p>
-        <p id="ref2">[2]Robin Rombach, Andreas Blattmann, Dominik Lorenz, Patrick Esser, and Bj ̈orn Ommer. High-
-            resolution image synthesis with latent diffusion models. In Proceedings of the IEEE/CVF
-            Conference on Computer Vision and Pattern Recognition (CVPR), pp. 10684–10695, 2022.</p>
-        <p id="ref3">[3]Zhida Feng, Zhenyu Zhang, Xintong Yu, Yewei Fang, Lanxin Li, Xuyi Chen, Yuxiang Lu, Ji-
-            axiang Liu, Weichong Yin, Shikun Feng, Yu Sun, Hao Tian, Hua Wu, and Haifeng Wang.
-            Ernie-vilg 2.0: Improving text-to-image diffusion model with knowledge-enhanced mixture-of-
-            denoising-experts. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern
-            Recognition (CVPR), pp. 10135–10145.2023.</p>
-        <p id="ref4">[4]Yuval Kirstain, Adam Polyak, Uriel Singer, Shahbuland Matiana, Joe Penna, and Omer Levy.
-            Pick-a-pic: An open dataset of user preferences for text-to-image generation. arXiv preprint
-            arXiv:2305.01569, 2023.</p>    
-        <p id="ref5">[5]Xiaoshi Wu, Yiming Hao, Keqiang Sun, Yixiong Chen, Feng Zhu, Rui Zhao, and Hongsheng Li.
-            Human preference score v2: A solid benchmark for evaluating human preferences of text-to-image
-            synthesis. arXiv preprint arXiv:2306.09341, 2023.</p>        
-        <p id="ref6">[6]Schuhmann C, Beaumont R, Vencu R, et al. Laion-5b: An open large-scale dataset for training next generation image-text models[J]. Advances in Neural Information Processing Systems, 2022, 35: 25278-25294.</p>
-        <p id="ref7">[7]https://www.instagram.com/les.creatonautes/</p>
-      </blockquote>
     
+    <h1>Comparisons with complex prompt editing</h1>
+    <img style="width: 80%;" src="resources/paper_image/compex2.png"
+        alt="Concept removal results"/>
     <br>
+    <h1>Multiple Fusion</h1>
+    <img style="width: 80%;" src="resources/paper_image/three_fuse.png"
+        alt="Breed mixing results"/>
+    <br>
+    <h1>Compare with image editing methonds</h1>
+    <img style="width: 80%;" src="resources/paper_image/compare_edit2.png"
+         alt="Semantic style transfer results"/>
+    <br>
+
+    <h1>Compare with mix methonds</h1>
+    <img style="width: 80%;" src="resources/paper_image/compare_mix3.png"
+         alt="Novel object synthesis results"/>
+    <br>
+
+    
+
+    <br><br>
     <hr>
 
+    <!-- <h1>Paper</h1>
+    <div class="paper-thumbnail">
+        <a href="https://arxiv.org">
+            <img class="layered-paper-big" width="100%" src="./resources/paper.jpg" alt="Paper thumbnail"/>
+        </a>
+    </div>
+    <div class="paper-info">
+        <h3>MagicMix: Semantic Mixing with Diffusion Models</h3>
+        <p>Jun Hao Liew*, Hanshu Yan*, Daquan Zhou and Jiashi Feng</p>
+        <p>arXiv, 2022. (*equal contribution)</p>
+        <pre><code>@article{liew2022magicmix,
+    title = {MagicMix: Semantic Mixing with Diffusion Models},
+    author = {Liew, Jun Hao and Yan, Hanshu and Zhou, Daquan and Feng, Jiashi},
+    journal = {arXiv preprint arXiv:2210.16056},
+    year = {2022},
+}</code></pre>
+    </div>
+
+    <br><br>
+    <hr>
+
+    <h1>Acknowledgements</h1>
+    <p style="width: 80%;">
+        This template was originally made by <a href="http://web.mit.edu/phillipi/">Phillip Isola</a> and <a href="http://richzhang.github.io/">Richard Zhang</a> for a <a href="http://richzhang.github.io/colorization/">colorful project</a>, and inherits the modifications made by <a href="https://github.com/jasonyzhang/webpage-template">Jason Zhang</a> and <a href="https://github.com/elliottwu/webpage-template">Elliott Wu</a>.
+    </p>
+
+    <br><br>
+</div>
 
 <script>
     let slideIndex = 1;
@@ -1577,7 +971,7 @@ an acceptable region to build a sampling method for selecting an optimal combina
       slides[slideIndex-1].style.display = "block";  
       dots[slideIndex-1].className += " active";
     }
-</script>
+</script> -->
 
 </body>
 
