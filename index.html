@@ -31,32 +31,8 @@
         gtag('js', new Date());
         gtag('config', 'UA-97476543-1');
     </script>
-    <!-- <style>
 
-        .author-list {
-            text-align: center;
-            font-size: 18px;
-            line-height: 1.6;
-        }
-        .affiliations {
-            text-align: center;
-            font-size: 16px;
-            margin-top: 20px;
-            line-height: 1.6;
-        }
-        .emails {
-            text-align: center;
-            font-size: 14px;
-            margin-top: 10px;
-            font-family: monospace;
-        }
-        sup {
-            font-size: smaller;
-        }
-    </style> -->
     <style>
-
-
         body {
             font-family: 'Georgia', serif;
             margin: 50px;
@@ -97,7 +73,7 @@
         .title {
             font-size: 48px;
             font-weight: bold;
-            background: linear-gradient(90deg, #E88872, #BB89C9);
+            background: linear-gradient(90deg, #caad29, #ff81c0);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 20px;
@@ -113,7 +89,6 @@
 
         /* Conference and year */
         .conference {
-            
             font-size: 30px;
             color: #0f0e0e; 
             margin-bottom: 2px;
@@ -249,6 +224,78 @@
             justify-content: space-between; /* 确保文本和图片有足够的空间 */
             align-items: center;
           }
+
+/* 解决图片位置和分隔线的布局问题 */
+.new-style .images-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr; /* 五列布局，第二列为分隔线 */
+    grid-template-rows: repeat(3, 250px); /* 3行，固定高度，增加高度以便展示更大图片 */
+    gap: 20px; /* 增加图片之间的间隔 */
+    width: 90%;
+    max-width: 1600px; /* 增大最大宽度，提供更多空间 */
+    margin: 0 auto; /* 居中容器 */
+}
+
+.new-style .image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+    /* background-color: #fff;
+    border: 1px solid #ddd; */
+    /* border-radius: 8px; */
+    width: 100%;
+    height: 110%;
+}
+
+.new-style .image-container img {
+    width: 100%; /* 让图片宽度填满容器 */
+    height: 100%; /* 让图片高度填满容器 */
+    object-fit: cover; /* 保持图片的比例，覆盖容器 */
+    border-radius: 5px;
+}
+
+/* 在new-style内的p标签样式，避免影响其他部分的p标签 */
+.new-style .image-container p {
+    margin-top: 10px; /* 增加文字与图片之间的间距 */
+    font-size: 16px;
+    color: #333;
+    font-weight: bold; /* 增加文字加粗效果 */
+}
+
+.new-style .highlight {
+    background-color: #f0f0f0;
+    /* 你还可以添加其他样式，例如阴影 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05); /* 放大效果 */
+    transition: transform 0.3s, box-shadow 0.3s; /* 动画过渡效果 */
+  }
+
+  /* 可选：悬停效果 */
+  .new-style .highlight:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    transform: scale(1.1);
+  }
+
+/* 为了让图片之间的分隔线和排版更和谐，调整列宽 */
+.new-style .container {
+    grid-template-columns: repeat(4, 1fr); /* 使每一列宽度均等 */
+}
+
+/* 进一步增强按钮和视觉效果 */
+.new-style .btn-icon {
+    padding: 12px 25px;
+    font-size: 18px;
+    border-radius: 30px;
+    transition: background-color 0.3s;
+    text-align: center;
+    background-color: #333;
+    color: white;
+}
+
+          
     </style>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -336,6 +383,66 @@
 
     <br><br>
     <hr>
+    <br><br>
+          <!-- 为新的区域添加 .new-style 类 -->
+  <div style="width: 100%;" class="new-style">
+    <div class="images-container">
+      <!-- 第一列的图片 -->
+      <div class="image-container highlight" style="grid-column: 1; grid-row: 1;">
+        <img  src="gif\African_chameleon.gif" alt="图片1">
+        <p style="text-align: center;">Original model</p>
+      </div>
+      <div class="image-container" style="grid-column: 1; grid-row: 2;">
+        <img  src="gif\cobalt_metal.gif" alt="图片2">
+        <p style="text-align: center;">Cobalt metal</p>
+      </div>
+      <div class="image-container" style="grid-column: 1; grid-row: 3;">
+        <img  src="gif\titanium_metal.gif" alt="图片3">
+        <p style="text-align: center;">Titanium metal</p>
+      </div>
+
+      <!-- 第二列的图片 -->
+      <div class="image-container" style="grid-column: 2; grid-row: 1;">
+        <img  src="gif\African_chameleon.gif" alt="图片4">
+        <p style="text-align: center;">African chameleon</p>
+      </div>
+      <div class="image-container" style="grid-column: 2; grid-row: 2;">
+        <img src="gif\ant.gif" alt="图片5">
+        <p style="text-align: center;">Ant</p>
+      </div>
+      <div class="image-container" style="grid-column: 2; grid-row: 3;">
+        <img src="gif\bald_eagle.gif" alt="图片6">
+        <p style="text-align: center;">Bald eagle</p>
+      </div>
+
+      <!-- 第三列及其他的图片 -->
+      <div class="image-container" style="grid-column: 3; grid-row: 1;">
+        <img src="gif\bighorn.gif" alt="图片7">
+        <p style="text-align: center;">Bighorn</p>
+      </div>
+      <div class="image-container" style="grid-column: 3; grid-row: 2;">
+        <img src="gif\chromium_metal.gif" alt="图片8">
+        <p style="text-align: center;">Chromium metal</p>
+      </div>
+      <div class="image-container" style="grid-column: 3; grid-row: 3;">
+        <img src="gif\cock.gif" alt="图片9">
+        <p style="text-align: center;">Cock</p>
+      </div>
+
+      <div class="image-container" style="grid-column: 4; grid-row: 1;">
+        <img src="gif\orchid_plant.gif" alt="图片10">
+        <p style="text-align: center;">Orchid plant</p>
+      </div>
+      <div class="image-container" style="grid-column: 4; grid-row: 2;">
+        <img src="gif\shark.gif" alt="图片11">
+        <p style="text-align: center;">Shark</p>
+      </div>
+      <div class="image-container" style="grid-column: 4; grid-row: 3;">
+        <img src="gif\European_fire_salamander.gif" alt="图片12">
+        <p style="text-align: center;">fire salamander</p>
+      </div>
+    </div>
+  </div>
 
     <h1>Abstract</h1>
     <p style="width: 80%;">
@@ -348,9 +455,72 @@
         Finally, these outputs are used to reconstruct a complete and novel 3D model. Extensive experiments demonstrate the effectiveness of our method, yielding impressive 3D creations.
     </p>
 
+    <h1>Rusult</h1>
+    <p style="width: 80%;">
+        Our method can generate novel 3D objects by mixing a 3D model with another object text. 
+        We show that our method can generate diverse and realistic 3D objects with consistent textures and accurate shapes. 
+        We also demonstrate that our method can generate novel 3D objects that are not present in the training data.
+    </p>
+
+      <!-- 为新的区域添加 .new-style 类 -->
+  <!-- <div style="width: 85%;" class="new-style">
+    <div class="images-container">
+      
+      <div class="image-container" style="grid-column: 1; grid-row: 2;">
+        <img  src="gif\African_chameleon.gif" alt="图片2">
+        <p style="text-align: center;">African chameleon</p>
+      </div>
+
+      
+      <div class="separator" style="grid-column: 2;"></div>
+      <div class="separator" style="grid-column: 2;"></div>
+      <div class="separator" style="grid-column: 2;"></div>
+
+      
+      <div class="image-container" style="grid-column: 3; grid-row: 1;">
+        <img  src="gif\African_chameleon.gif" alt="图片4">
+        <p style="text-align: center;">African chameleon</p>
+      </div>
+      <div class="image-container" style="grid-column: 3; grid-row: 2;">
+        <img src="gif\ant.gif" alt="图片5">
+        <p style="text-align: center;">Ant</p>
+      </div>
+      <div class="image-container" style="grid-column: 3; grid-row: 3;">
+        <img src="gif\bald_eagle.gif" alt="图片6">
+        <p style="text-align: center;">Bald eagle</p>
+      </div>
+
+      
+      <div class="image-container" style="grid-column: 4; grid-row: 1;">
+        <img src="gif\bighorn.gif" alt="图片7">
+        <p style="text-align: center;">Bighorn</p>
+      </div>
+      <div class="image-container" style="grid-column: 4; grid-row: 2;">
+        <img src="gif\chromium_metal.gif" alt="图片8">
+        <p style="text-align: center;">Chromium metal</p>
+      </div>
+      <div class="image-container" style="grid-column: 4; grid-row: 3;">
+        <img src="gif\cock.gif" alt="图片9">
+        <p style="text-align: center;">Cock</p>
+      </div>
+
+      <div class="image-container" style="grid-column: 5; grid-row: 1;">
+        <img src="gif\orchid_plant.gif" alt="图片10">
+        <p style="text-align: center;">Orchid plant</p>
+      </div>
+      <div class="image-container" style="grid-column: 5; grid-row: 2;">
+        <img src="gif\shark.gif" alt="图片11">
+        <p style="text-align: center;">Shark</p>
+      </div>
+      <div class="image-container" style="grid-column: 5; grid-row: 3;">
+        <img src="gif\European_fire_salamander.gif" alt="图片12">
+        <p style="text-align: center;">fire salamander</p>
+      </div>
+    </div>
+  </div> -->
+
     <br><br>
     <hr>
-
    
   <h1>Framework</h1>
     <img style="width: 80%;" src="resources\images\pipline2_page-0001.jpg"
