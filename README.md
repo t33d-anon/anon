@@ -1,4 +1,4 @@
-# T323D: Creative Text+3D-to-3D Object Generation via Multi-view Inversion
+# Category-Aware 3D Object Composition with Disentangled Texture and Shape Multi-view Diffusion
 
 <p align="center">
 <br>
